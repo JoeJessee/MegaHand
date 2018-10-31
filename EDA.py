@@ -93,3 +93,10 @@ def pair_grid(iterator, diag_type=plt.hist, off_type=plt.plot):
         else:
             g = g.map_offdiag(off_type)
     yield g
+
+#%%
+if __name__ == '__main__':
+    files = glob_data(folder='C:\\Users\\pattersonrb\\PyProjects\\MegaHand\\EMG_Classification_Matlab\\Data\\TrainingData')
+    plots = pair_grid(files, diag_type=sns.kdeplot)
+    for fig in plots:
+        plt.show()
