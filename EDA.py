@@ -19,6 +19,7 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 import pandas as pd
 import numpy as np
+from matplotlib.backends.backend_pdf import PdfPages
 
 #%%
 def glob_data(extension='.csv', folder=getcwd()):
@@ -70,18 +71,19 @@ def corr_matrix(iterable):
     figs = corr_matrix(('filea', 'fileb', 'filec'))
     """
     sns.set(style='white', font='monospace')
-    for data in iterator:
+    for data in iterable:
         df = pd.read_csv(data).select_dtypes(include='number')
         corr = df.corr()
         mask = np.zeros_like(corr, dtype=np.bool)
         mask[np.triu_indices_from(mask)] = True
-        ax = sns.heatmap(corr, mask=mask, 
-                         cmap='seismic', vmin=-1, vmax=1,
-                         cbar_kws={'shrink': 0.5}, 
-                         square=True, linewidths=0.5)
+        fig, ax = plt.subplots()
+        sns.heatmap(corr, mask=mask, ax=ax,
+                    cmap='seismic', vmin=-1, vmax=1,
+                    cbar_kws={'shrink': 0.5}, 
+                    square=True, linewidths=0.5)
         ax.tick_params(axis='both', labelsize=8)
         ax.set_title(data.split('\\')[-1], fontdict={'fontsize': 12, })
-        yield ax
+        yield fig
 
 def ECDF(iterable):
     """Plots ECDF of all numeric columns for files in iterable
@@ -110,10 +112,35 @@ def ECDF(iterable):
         fig = plt.legend(fontsize=8, frameon=False)
         yield fig
 
+def figs_to_pdf(iterable, filename='___.pdf'):
+    """Saves an iterable containing matplotlib figs as a PDF
+
+    Arguments
+    ---------
+    iterable: iterable containing matplotlib plot/figs
+    filename: type = str, default = '___.pdf'
+        name of pdf to be created
+
+    Returns
+    -------
+    True, if successful
+
+    Example
+    -------
+    figs_to_pdf((fig1, fig2, fig3), 'test.pdf')
+    """
+    if type(filename) != str:
+        raise TypeError('filename must be a string')
+    if '.pdf' not in filename:
+        raise ValueError('filename must be a .pdf file')
+    with PdfPages(filename) as pdf:
+        for img in iterable:
+            pdf.savefig(img)
+    return True
 
 #%%
 files = glob_data(folder=r'C:\Users\pattersonrb\PyProjects\MegaHand\EMG_Classification_Matlab\Data\TrainingData')
 matrices = corr_matrix(files)
 plots = ECDF(files)
-for i in plots:
-    plt.show()
+figs_to_pdf(matrices, r'C:\Users\pattersonrb\PyProjects\MegaHand\EMG_Classification_Matlab\Data\TrainingData\corr_matrices.pdf')
+figs_to_pdf(plots, r'C:\Users\pattersonrb\PyProjects\MegaHand\EMG_Classification_Matlab\Data\TrainingData\ECDFs.pdf')
