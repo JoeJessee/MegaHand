@@ -139,8 +139,9 @@ def figs_to_pdf(iterable, filename='___.pdf'):
     return True
 
 #%%
-files = glob_data(folder=r'C:\Users\pattersonrb\PyProjects\MegaHand\EMG_Classification_Matlab\Data\TrainingData')
-matrices = corr_matrix(files)
-plots = ECDF(files)
-figs_to_pdf(matrices, r'C:\Users\pattersonrb\PyProjects\MegaHand\EMG_Classification_Matlab\Data\TrainingData\corr_matrices.pdf')
-figs_to_pdf(plots, r'C:\Users\pattersonrb\PyProjects\MegaHand\EMG_Classification_Matlab\Data\TrainingData\ECDFs.pdf')
+if __name__ = '__main__':
+    files = glob_data(folder=r'C:\Users\pattersonrb\PyProjects\MegaHand\EMG_Classification_Matlab\Data\TrainingData')
+    matrices = corr_matrix(files)
+    plots = ECDF(files)
+    figs_to_pdf(matrices, r'C:\Users\pattersonrb\PyProjects\MegaHand\EMG_Classification_Matlab\Data\TrainingData\corr_matrices.pdf')
+    figs_to_pdf(plots, r'C:\Users\pattersonrb\PyProjects\MegaHand\EMG_Classification_Matlab\Data\TrainingData\ECDFs.pdf')
