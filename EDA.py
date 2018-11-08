@@ -147,5 +147,3 @@ if __name__ == '__main__':
     plots = ECDF(files)
     figs_to_pdf(matrices, r'C:\Users\pattersonrb\PyProjects\MegaHand\EMG_Classification_Matlab\Data\TrainingData\corr_matrices.pdf')
     figs_to_pdf(plots, r'C:\Users\pattersonrb\PyProjects\MegaHand\EMG_Classification_Matlab\Data\TrainingData\ECDFs.pdf')
-    for i in plots:
-        plt.show()
