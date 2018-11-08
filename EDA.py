@@ -104,12 +104,13 @@ def ECDF(iterable):
     sns.set(style='ticks', font='monospace')
     for file in iterable:
         data = pd.read_csv(file).select_dtypes(include='number')
+        fig, ax = plt.subplots()
         for col in data.columns:
-            fig = plt.plot(np.sort(data[col]), np.arange(1, len(data[col]) + 1) / float(len(data[col])), label=col)
+            ax.plot(np.sort(data[col]), np.arange(1, len(data[col]) + 1) / float(len(data[col])), label=col)
             sns.despine(offset=5)
-        fig = plt.tick_params(axis='both', labelsize=8)
-        fig = plt.title(file.split('\\')[-1], fontdict={'fontsize': 12})
-        fig = plt.legend(fontsize=8, frameon=False)
+        ax.tick_params(axis='both', labelsize=8)
+        ax.set_title(file.split('\\')[-1], fontdict={'fontsize': 12})
+        ax.legend(fontsize=8, frameon=False)
         yield fig
 
 def figs_to_pdf(iterable, filename='___.pdf'):
@@ -142,6 +143,9 @@ def figs_to_pdf(iterable, filename='___.pdf'):
 if __name__ == '__main__':
     files = glob_data(folder=r'C:\Users\pattersonrb\PyProjects\MegaHand\EMG_Classification_Matlab\Data\TrainingData')
     matrices = corr_matrix(files)
+    files = glob_data(folder=r'C:\Users\pattersonrb\PyProjects\MegaHand\EMG_Classification_Matlab\Data\TrainingData')
     plots = ECDF(files)
     figs_to_pdf(matrices, r'C:\Users\pattersonrb\PyProjects\MegaHand\EMG_Classification_Matlab\Data\TrainingData\corr_matrices.pdf')
     figs_to_pdf(plots, r'C:\Users\pattersonrb\PyProjects\MegaHand\EMG_Classification_Matlab\Data\TrainingData\ECDFs.pdf')
+    for i in plots:
+        plt.show()
