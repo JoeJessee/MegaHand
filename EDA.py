@@ -52,7 +52,7 @@ def glob_data(extension='.csv', folder=getcwd()):
     return files
 
 #%%
-def corr_matrix(iterator):
+def corr_matrix(iterable):
     """Generate a diagonal correlational matrix for a dataframe
     Altered from: seaborn.pydata.org/examples/many_pairwise_correlations.html
     
@@ -62,12 +62,12 @@ def corr_matrix(iterator):
 
     Yields
     ------
-    Iterable containing:
+    Generator containing:
     ax: matplotlib ax element of correlation matrix
 
     Example
     -------
-    figs = corr_matrix((filea, fileb, filec))
+    figs = corr_matrix(('filea', 'fileb', 'filec'))
     """
     sns.set(style='white', font='monospace')
     for data in iterator:
@@ -84,7 +84,20 @@ def corr_matrix(iterator):
         yield ax
 
 def ECDF(iterable):
-    """Plots ECDF of all numeric columns in a dataframe
+    """Plots ECDF of all numeric columns for files in iterable
+
+    Arguments
+    ---------
+    iterable containing data file names
+
+    Yields
+    ------
+    Generator containing:
+    ax: matplotlib ax element of ECDF, 1 per file
+
+    Example
+    -------
+    ecdfs = ECDF(('filea', 'fileb', 'filec'))
     """
 
 
