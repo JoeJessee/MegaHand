@@ -60,8 +60,9 @@ def corr_matrix(iterator):
     ---------
     iterator: iterable containing data file names
 
-    Returns
-    -------
+    Yields
+    ------
+    Iterable containing:
     ax: matplotlib ax element of correlation matrix
 
     Example
@@ -82,8 +83,10 @@ def corr_matrix(iterator):
         ax.set_title(data.split('\\')[-1], fontdict={'fontsize': 12, })
         yield ax
 
-def ECDF(df):
-    """Plots ECDF of 
+def ECDF(iterable):
+    """Plots ECDF of all numeric columns in a dataframe
+    """
+
 
 #%%
 files = glob_data(folder=r'C:\Users\pattersonrb\PyProjects\MegaHand\EMG_Classification_Matlab\Data\TrainingData')
