@@ -71,7 +71,7 @@ def corr_matrix(iterable):
     """
     sns.set(style='white', font='monospace')
     for data in iterator:
-        df = pd.read_csv(data)
+        df = pd.read_csv(data).select_dtypes(include='number')
         corr = df.corr()
         mask = np.zeros_like(corr, dtype=np.bool)
         mask[np.triu_indices_from(mask)] = True
@@ -99,6 +99,16 @@ def ECDF(iterable):
     -------
     ecdfs = ECDF(('filea', 'fileb', 'filec'))
     """
+    sns.set(style='ticks', font='monospace')
+    for file in iterable:
+        data = pd.read_csv(file).select_dtypes(include='number')
+        for col in data.columns:
+            fig = plt.plot(np.sort(data[col]), np.arange(1, len(data[col]) + 1) / float(len(data[col])), label=col)
+            sns.despine(offset=5)
+        fig = plt.tick_params(axis='both', labelsize=8)
+        fig = plt.title(data.split('\\')[-1], fontdict={'fontsize': 12})
+        fig = plt.legend(fontisze=8, frameon=False)
+        yield fig
 
 
 #%%
