@@ -106,13 +106,14 @@ def ECDF(iterable):
             fig = plt.plot(np.sort(data[col]), np.arange(1, len(data[col]) + 1) / float(len(data[col])), label=col)
             sns.despine(offset=5)
         fig = plt.tick_params(axis='both', labelsize=8)
-        fig = plt.title(data.split('\\')[-1], fontdict={'fontsize': 12})
-        fig = plt.legend(fontisze=8, frameon=False)
+        fig = plt.title(file.split('\\')[-1], fontdict={'fontsize': 12})
+        fig = plt.legend(fontsize=8, frameon=False)
         yield fig
 
 
 #%%
 files = glob_data(folder=r'C:\Users\pattersonrb\PyProjects\MegaHand\EMG_Classification_Matlab\Data\TrainingData')
-plots = corr_matrix(files)
+matrices = corr_matrix(files)
+plots = ECDF(files)
 for i in plots:
     plt.show()
