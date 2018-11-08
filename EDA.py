@@ -139,7 +139,7 @@ def figs_to_pdf(iterable, filename='___.pdf'):
     return True
 
 #%%
-if __name__ = '__main__':
+if __name__ == '__main__':
     files = glob_data(folder=r'C:\Users\pattersonrb\PyProjects\MegaHand\EMG_Classification_Matlab\Data\TrainingData')
     matrices = corr_matrix(files)
     plots = ECDF(files)
