@@ -54,6 +54,7 @@ def glob_data(extension='.csv', folder=getcwd()):
 #%%
 def corr_matrix(iterator):
     """Generate a diagonal correlational matrix for a dataframe
+    Altered from: seaborn.pydata.org/examples/many_pairwise_correlations.html
     
     Arguments
     ---------
@@ -81,6 +82,8 @@ def corr_matrix(iterator):
         ax.set_title(data.split('\\')[-1], fontdict={'fontsize': 12, })
         yield ax
 
+def ECDF(df):
+    """Plots ECDF of 
 
 #%%
 files = glob_data(folder=r'C:\Users\pattersonrb\PyProjects\MegaHand\EMG_Classification_Matlab\Data\TrainingData')
