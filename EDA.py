@@ -8,6 +8,7 @@ plot_distribution: plot distribution of data against standard curves
 
 Example use:
 files = glob_data(extension='.xlsx', folder='C:/Users/your_name/your_data')
+figs = pair_grid()
 """
 
 #%%
@@ -17,6 +18,7 @@ from more_itertools.more import peekable
 import matplotlib.pyplot as plt
 import seaborn as sns
 import pandas as pd
+import numpy as np
 
 #%%
 def glob_data(extension='.csv', folder=getcwd()):
@@ -40,63 +42,48 @@ def glob_data(extension='.csv', folder=getcwd()):
     if type(folder) != str:
         raise TypeError('Folder must be a string')
     if folder != getcwd():
-        if ('/' not in folder) and ('\\' not in folder):
+        if ('\\' not in folder):
             raise ValueError('Path should be specified with / or \\ only')
-        if folder.endswith(('/', '\\')):
+        if folder.endswith(('\\')):
             raise ValueError('Path should not end with a separator')
-    files = peekable(iglob(f'{folder}\\*{extension}'))
+    files = peekable(iglob(fr'{folder}\*{extension}'))
     if files.peek('empty') == 'empty': # Returns empty if files contains no items
         raise ValueError(f'No {extension} files found at {folder}')
     return files
 
 #%%
-def pair_grid(iterator, diag_type=plt.hist, off_type=plt.plot):
-    """Plots all data files in interator as seaborn pair grids and saves the images
-    Currently only supports .csv files, and directly specified graph types
+def corr_matrix(iterator):
+    """Generate a diagonal correlational matrix for a dataframe
+    
+    Arguments
+    ---------
+    iterator: iterable containing data file names
 
-    Arguments:
-    ----------
-    iterator: iterable, required
-        Contains a list of path names to data files
-        Any iterable may be used (list, tuple, generator, etc.). 
-    diag_type: function, default=plt.hist
-        In: [plt.hist, sns.kdeplot]
-        Type of plot to be used on diagonal
-    off_type: function, default=plt.plot
-        In: [plt.plot, plt.hexbin, sns.kdeplot]
-        Type of plot to be used for all plots on diagonal
+    Returns
+    -------
+    ax: matplotlib ax element of correlation matrix
 
-    Returns:
-    --------
-    figures: generator
-        Generator containing plotted figures
-
-    Example:
-    --------
-    figures = pair_grid(['filea', 'fileb', filec'], diag_type='kde', off_type='hex')
+    Example
+    -------
+    figs = corr_matrix((filea, fileb, filec))
     """
-    sns.set(style='ticks', font='monospace')
-    diag_type_allowed = [plt.hist, sns.kdeplot]
-    off_type_allowed = [plt.plot, plt.hexbin, sns.kdeplot]
-    if (not callable(diag_type)) or (not callable(off_type)):
-        raise TypeError('diag_type and off_type must be functions')
-    if diag_type not in diag_type_allowed:
-        raise ValueError(f'diag_type needs to be in {diag_type_allowed}')
-    if off_type not in off_type_allowed:
-        raise ValueError(f'off_type needs to be in {off_type_allowed}')
-    for file in iterator:
-        data = pd.read_csv(file)
-        g = sns.PairGrid(data)
-        g = g.map_diag(diag_type)
-        if off_type == plt.plot:
-            g = g.map_offdiag(off_type, marker='.', linestyle='none')
-        else:
-            g = g.map_offdiag(off_type)
-    yield g
+    sns.set(style='white', font='monospace')
+    for data in iterator:
+        df = pd.read_csv(data)
+        corr = df.corr()
+        mask = np.zeros_like(corr, dtype=np.bool)
+        mask[np.triu_indices_from(mask)] = True
+        ax = sns.heatmap(corr, mask=mask, 
+                         cmap='seismic', vmin=-1, vmax=1,
+                         cbar_kws={'shrink': 0.5}, 
+                         square=True, linewidths=0.5)
+        ax.tick_params(axis='both', labelsize=8)
+        ax.set_title(data.split('\\')[-1], fontdict={'fontsize': 12, })
+        yield ax
+
 
 #%%
-if __name__ == '__main__':
-    files = glob_data(folder='C:\\Users\\pattersonrb\\PyProjects\\MegaHand\\EMG_Classification_Matlab\\Data\\TrainingData')
-    plots = pair_grid(files, diag_type=sns.kdeplot)
-    for fig in plots:
-        plt.show()
+files = glob_data(folder=r'C:\Users\pattersonrb\PyProjects\MegaHand\EMG_Classification_Matlab\Data\TrainingData')
+plots = corr_matrix(files)
+for i in plots:
+    plt.show()
