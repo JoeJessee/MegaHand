@@ -1,7 +1,11 @@
 import pandas as pd
 import numpy as np
 from EDA import glob_data
+from sklearn.preprocessing import RobustScaler
+from sklearn.decomposition import PCA
 from sklearn.naive_bayes import GaussianNB
+from sklearn.pipeline import Pipeline
+from sklearn.model_selection import GridSearchCV
 
 def concat_files(iterable):
     """Concatenates all files in iterable into a single data frame
@@ -30,11 +34,12 @@ def concat_files(iterable):
 
 if __name__ == '__main__':
     # Read Data
-    data = pd.read_csv(r'C:\Users\pattersonrb\PyProjects\MegaHand\EMG_Classification_Matlab\Data\TrainingData\TrainingDataset.txt')
-    y_train = data.Action.values.reshape(-1, 1)
-    X_train = data.drop('Action', axis=1).values
+    data_train = pd.read_csv(r'C:\Users\pattersonrb\PyProjects\MegaHand\EMG_Classification_Matlab\Data\TrainingData\TrainingDataset.txt')
+    y_train = data_train.Action.values.reshape(-1, 1)
+    X_train = data_train.drop('Action', axis=1).values
 
     # Test Data
     file_list = glob_data(folder=r'C:\Users\pattersonrb\PyProjects\MegaHand\EMG_Classification_Matlab\Data\TestingData')
     data_test = concat_files(file_list)
-    print(data_test)
+    y_test = data_test.Action.values.reshape(-1, 1)
+    X_test = data_test.drop('Action', axis=1).values
