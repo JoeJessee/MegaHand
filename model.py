@@ -37,23 +37,23 @@ def concat_files(iterable):
 if __name__ == '__main__':
     # Read Data
     data_train = pd.read_csv(r'C:\Users\pattersonrb\PyProjects\MegaHand\EMG_Classification_Matlab\Data\TrainingData\TrainingDataset.txt')
-    y_train = data_train.Action.values.reshape(-1, 1)
+    y_train = data_train.Action.values
     X_train = data_train.drop('Action', axis=1).values
 
     # Test Data
     file_list = glob_data(folder=r'C:\Users\pattersonrb\PyProjects\MegaHand\EMG_Classification_Matlab\Data\TestingData')
     data_test = concat_files(file_list)
-    y_test = data_test.Action.values.reshape(-1, 1)
+    y_test = data_test.Action.values
     X_test = data_test.drop('Action', axis=1).values
 
     # Establish pipeline
-    pl = Pipeline(['scale': RobustScaler(),
-                   'pca': PCA(),
-                   'clf': GaussianNB()
+    pl = Pipeline([('scale', RobustScaler()),
+                   ('pca', PCA()),
+                   ('clf', GaussianNB())
                    ])
     
     # Establish GridSearchCV, cv=3 to save on computation
-    param_grid = {'pca__n_components': list(range(X_train.shape[1]))}
+    param_grid = {'pca__n_components': [2, 3, 4, 5, 6, 7]}
     cv = GridSearchCV(pl, param_grid=param_grid, cv=3)
 
     # Train and retrieve best_parameters
