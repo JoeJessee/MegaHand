@@ -6,6 +6,7 @@ from sklearn.decomposition import PCA
 from sklearn.naive_bayes import GaussianNB
 from sklearn.pipeline import Pipeline
 from sklearn.model_selection import GridSearchCV
+from sklearn.metrics import classification_report
 
 def concat_files(iterable):
     """Concatenates all files in iterable into a single data frame
@@ -56,3 +57,11 @@ if __name__ == '__main__':
 
     # Train and retrieve best_parameters
     cv.fit(X_train, y_train)
+    model = cv.best_estimator_
+    print(f'Best score: {cv.best_score_}')
+    print(f'Best params: {cv.best_params_}')
+
+    # Predict and score
+    y_predict = model.predict(X_test)
+    print(model.score(X_test, y_test))
+    print(classification_report(y_test, y_predict))
