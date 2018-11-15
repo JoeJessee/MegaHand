@@ -22,9 +22,10 @@ def concat_files(iterable):
         iterator = iter(iterable)
     except TypeError:
         print('Concat_files requires filepaths to be in an iterable')
-    df = pd.DataFrame()
+    data = []
     for file in iterable: 
-        df.append(pd.read_csv(file), ignore_index=True)
+        data.append(pd.read_csv(file))
+    df = pd.concat(data, ignore_index=True)
     return df
 
 if __name__ == '__main__':
@@ -34,7 +35,6 @@ if __name__ == '__main__':
     X_train = data.drop('Action', axis=1).values
 
     # Test Data
-    file_list = glob_data(r'C:\Users\pattersonrb\PyProjects\MegaHand\EMG_Classification_Matlab\Data\TestingData')
+    file_list = glob_data(folder=r'C:\Users\pattersonrb\PyProjects\MegaHand\EMG_Classification_Matlab\Data\TestingData')
     data_test = concat_files(file_list)
-
     print(data_test)
