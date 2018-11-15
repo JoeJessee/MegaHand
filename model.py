@@ -7,6 +7,7 @@ from sklearn.naive_bayes import GaussianNB
 from sklearn.pipeline import Pipeline
 from sklearn.model_selection import GridSearchCV
 from sklearn.metrics import classification_report
+import pickle
 
 def concat_files(iterable):
     """Concatenates all files in iterable into a single data frame
@@ -65,3 +66,8 @@ if __name__ == '__main__':
     y_predict = model.predict(X_test)
     print(model.score(X_test, y_test))
     print(classification_report(y_test, y_predict))
+
+    # Pickle model
+    with open('RobustScaler_PCA_GaussianNB.pickle', 'w') as file:
+        pickle.dump(model, file)
+    
