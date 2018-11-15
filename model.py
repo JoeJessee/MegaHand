@@ -1,7 +1,7 @@
 import pandas as pd
 import numpy as np
 from EDA import glob_data
-from sklearn.preprocessing import RobustScaler
+from sklearn.preprocessing import RobustScaler, StandardScaler, MinMaxScaler
 from sklearn.decomposition import PCA
 from sklearn.naive_bayes import GaussianNB
 from sklearn.pipeline import Pipeline
