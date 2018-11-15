@@ -59,16 +59,14 @@ if __name__ == '__main__':
     # Train and retrieve best_parameters
     cv.fit(X_train, y_train)
     model = cv.best_estimator_
-    print(f'Best score: {cv.best_score_}')
-    print(f'Best params: {cv.best_params_}')
 
     # Predict and score
     y_predict = model.predict(X_test)
     print(model.score(X_test, y_test))
-    report = pd.DataFrame.from_dict(classification_report(y_test, y_predict), orient='index')
+    report = pd.DataFrame.from_dict(classification_report(y_test, y_predict, output_dict=True), orient='index')
     report.to_csv(r'C:\Users\pattersonrb\PyProjects\MegaHand\RobustScaler_PCA_GaussianNB.csv')
 
     # Pickle model
-    with open('C:\Users\pattersonrb\PyProjects\MegaHand\RobustScaler_PCA_GaussianNB.pickle', 'wb') as file:
+    with open(r'C:\Users\pattersonrb\PyProjects\MegaHand\RobustScaler_PCA_GaussianNB.pickle', 'wb') as file:
         pickle.dump(model, file)
     
