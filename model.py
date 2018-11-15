@@ -64,9 +64,9 @@ if __name__ == '__main__':
     y_predict = model.predict(X_test)
     print(model.score(X_test, y_test))
     report = pd.DataFrame.from_dict(classification_report(y_test, y_predict, output_dict=True), orient='index')
-    report.to_csv(r'C:\Users\pattersonrb\PyProjects\MegaHand\RobustScaler_PCA_GaussianNB.csv')
+    report.to_csv(r'C:\Users\pattersonrb\PyProjects\MegaHand\Models\RobustScaler_PCA_GaussianNB.csv')
 
     # Pickle model
-    with open(r'C:\Users\pattersonrb\PyProjects\MegaHand\RobustScaler_PCA_GaussianNB.pickle', 'wb') as file:
+    with open(r'C:\Users\pattersonrb\PyProjects\MegaHand\Models\RobustScaler_PCA_GaussianNB.pickle', 'wb') as file:
         pickle.dump(model, file)
     
