@@ -68,6 +68,6 @@ if __name__ == '__main__':
     print(classification_report(y_test, y_predict))
 
     # Pickle model
-    with open('RobustScaler_PCA_GaussianNB.pickle', 'w') as file:
+    with open('RobustScaler_PCA_GaussianNB.pickle', 'wb') as file:
         pickle.dump(model, file)
     
