@@ -1,6 +1,11 @@
 # MegaHand
 Robotic Hand Project Repository
 
+## Dependencies
+scikit-learn v0.20.0
+matplotlib v3.0.0
+python 3.7.1
+
 ## Pseudocode outline
 
 1. Model training/selection
