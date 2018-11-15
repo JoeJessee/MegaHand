@@ -1,8 +1,8 @@
 import pandas as pd
 import numpy as np
 from EDA import glob_data
-from sklearn.preprocessing import RobustScaler, StandardScaler, MinMaxScaler
-from sklearn.decomposition import PCA
+from sklearn.preprocessing import RobustScaler
+from sklearn.decomposition import PCA, IncrementalPCA
 from sklearn.naive_bayes import GaussianNB
 from sklearn.pipeline import Pipeline
 from sklearn.model_selection import GridSearchCV
@@ -48,25 +48,27 @@ if __name__ == '__main__':
 
     # Establish pipeline
     pl = Pipeline([('scale', RobustScaler()),
-                   ('pca', PCA()),
+                   ('pca', IncrementalPCA()),
                    ('clf', GaussianNB())
                    ])
     
     # Establish GridSearchCV, cv=3 to save on computation
-    param_grid = {'pca__n_components': [2, 3, 4, 5, 6, 7]}
+    param_grid = {'pca__n_components': [2, 3, 4, 5, 6, 7],
+                  'pca__whiten': [True, False]}
     cv = GridSearchCV(pl, param_grid=param_grid, cv=3)
 
     # Train and retrieve best_parameters
     cv.fit(X_train, y_train)
+    print(cv.best_params_)
     model = cv.best_estimator_
 
     # Predict and score
     y_predict = model.predict(X_test)
     print(model.score(X_test, y_test))
     report = pd.DataFrame.from_dict(classification_report(y_test, y_predict, output_dict=True), orient='index')
-    report.to_csv(r'C:\Users\pattersonrb\PyProjects\MegaHand\Models\RobustScaler_PCA_GaussianNB.csv')
+    report.to_csv(r'C:\Users\pattersonrb\PyProjects\MegaHand\Models\RobustScaler_iPCA_GaussianNB.csv')
 
     # Pickle model
-    with open(r'C:\Users\pattersonrb\PyProjects\MegaHand\Models\RobustScaler_PCA_GaussianNB.pickle', 'wb') as file:
+    with open(r'C:\Users\pattersonrb\PyProjects\MegaHand\Models\RobustScaler_iPCA_GaussianNB.pickle', 'wb') as file:
         pickle.dump(model, file)
     
