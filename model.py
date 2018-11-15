@@ -43,3 +43,16 @@ if __name__ == '__main__':
     data_test = concat_files(file_list)
     y_test = data_test.Action.values.reshape(-1, 1)
     X_test = data_test.drop('Action', axis=1).values
+
+    # Establish pipeline
+    pl = Pipeline(['scale': RobustScaler(),
+                   'pca': PCA(),
+                   'clf': GaussianNB()
+                   ])
+    
+    # Establish GridSearchCV, cv=3 to save on computation
+    param_grid = {'pca__n_components': list(range(X_train.shape[1]))}
+    cv = GridSearchCV(pl, param_grid=param_grid, cv=3)
+
+    # Train and retrieve best_parameters
+    cv.fit(X_train, y_train)
