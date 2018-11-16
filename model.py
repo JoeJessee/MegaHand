@@ -77,7 +77,7 @@ if __name__ == '__main__':
                    ('clf', GradientBoostingClassifier(
                         n_estimators=1000, n_iter_no_change=5, 
                         tol=0.001, validation_fraction=0.2, presort=True, 
-                        subsample=0.5, ax_features='sqrt')
+                        subsample=0.5, max_features='sqrt')
                     )])
     
     # establish gridsearchcv, cv=3 to save on computation
