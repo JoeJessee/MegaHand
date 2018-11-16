@@ -51,8 +51,8 @@ if __name__ == '__main__':
 
     # Establish pipeline
     pl = Pipeline([('int', PolynomialFeatures(include_bias=False, interaction_only=True)),
-                   #('scale', RobustScaler()),
-                   ('pca', IncrementalPCA(n_components=7, whiten=True)),
+                   ('scale', RobustScaler()),
+                   #('pca', IncrementalPCA(n_components=7, whiten=True)),
                    ('clf', GradientBoostingClassifier())
                    ])
     
