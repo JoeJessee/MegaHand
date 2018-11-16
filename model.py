@@ -4,9 +4,9 @@
 import pandas as pd
 import numpy as np
 from EDA import glob_data
-from sklearn.preprocessing import PolynomialFeatures, RobustScaler, MinMaxScaler
-from sklearn.feature_selection import SelectKBest, chi2
+from sklearn.preprocessing import PolynomialFeatures, RobustScaler
 from sklearn.ensemble import GradientBoostingClassifier
+from sklearn.svm import LinearSVC
 from sklearn.pipeline import Pipeline
 from sklearn.model_selection import GridSearchCV
 from sklearn.metrics import classification_report
@@ -51,26 +51,25 @@ if __name__ == '__main__':
 
     # Establish pipeline
     pl = Pipeline([('int', PolynomialFeatures(include_bias=False, interaction_only=True)),
-                   ('scale', MinMaxScaler()),
-                   ('select', SelectKBest(chi2)), 
-                   ('clf', GradientBoostingClassifier())
+                   ('scale', RobustScaler()),
+                   ('clf', LinearSVC())
                    ])
     
     # establish gridsearchcv, cv=3 to save on computation
-    param_grid = {'select__k': [5, 7, 10]}
-    cv = GridSearchCV(pl, param_grid=param_grid, cv=3)
+    #param_grid = {'': [5, 7, 10]}
+    #cv = GridSearchCV(pl, param_grid=param_grid, cv=3)
 
     # train and retrieve best_parameters
-    cv.fit(X_train, y_train)
-    print(cv.best_params_)
-    model = cv.best_estimator_
+    pl.fit(X_train, y_train)
+    #print(cv.best_params_)
+    model = pl
 
     # predict and score
     y_predict = model.predict(X_test)
     print(model.score(X_test, y_test))
     report = pd.DataFrame.from_dict(classification_report(y_test, y_predict, output_dict=True), orient='index')
-    report.to_csv(r'c:\users\pattersonrb\pyprojects\megahand\models\int_MinMax_kbest_GBC.csv')
+    report.to_csv(r'c:\users\pattersonrb\pyprojects\megahand\models\int_robust_lSVC.csv')
 
     # pickle model
-    with open(r'c:\users\pattersonrb\pyprojects\megahand\models\int_MinMax_kbest_GBC.pickle', 'wb') as file:
+    with open(r'c:\users\pattersonrb\pyprojects\megahand\models\int_robust_lSVC.pickle', 'wb') as file:
         pickle.dump(model, file)
