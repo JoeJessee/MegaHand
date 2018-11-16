@@ -4,9 +4,8 @@
 import pandas as pd
 import numpy as np
 from EDA import glob_data
-from sklearn.preprocessing import RobustScaler
+from sklearn.preprocessing import PolynomialFeatures, RobustScaler
 from sklearn.decomposition import IncrementalPCA
-from sklearn.linear_model import LogisticRegression
 from sklearn.ensemble import GradientBoostingClassifier
 from sklearn.pipeline import Pipeline
 from sklearn.model_selection import GridSearchCV
@@ -51,13 +50,15 @@ if __name__ == '__main__':
     X_test = data_test.drop('Action', axis=1).values
 
     # Establish pipeline
-    pl = Pipeline([('scale', RobustScaler()),
+    pl = Pipeline([('int', PolynomialFeatures()),
+                   ('scale', RobustScaler()),
                    ('pca', IncrementalPCA(n_components=7, whiten=True)),
-                   ('clf', LogisticRegression(solver='lbfgs'))
+                   ('clf', GradientBoostingClassifier())
                    ])
     
     # establish gridsearchcv, cv=3 to save on computation
-    param_grid = {'clf__multi_class': ['ovr', 'multinomial']}
+    param_grid = {'int__interaction_only': [True, False],
+                  'int__include_bias': [True, False]}
     cv = GridSearchCV(pl, param_grid=param_grid, cv=3)
 
     # train and retrieve best_parameters
@@ -69,8 +70,8 @@ if __name__ == '__main__':
     y_predict = model.predict(X_test)
     print(model.score(X_test, y_test))
     report = pd.DataFrame.from_dict(classification_report(y_test, y_predict, output_dict=True), orient='index')
-    report.to_csv(r'c:\users\pattersonrb\pyprojects\megahand\models\robustscaler_ipca_LogReg.csv')
+    report.to_csv(r'c:\users\pattersonrb\pyprojects\megahand\models\int_robustscaler_ipca_GBC.csv')
 
     # pickle model
-    with open(r'c:\users\pattersonrb\pyprojects\megahand\models\robustscaler_ipca_LogReg.pickle', 'wb') as file:
+    with open(r'c:\users\pattersonrb\pyprojects\megahand\models\int_robustscaler_ipca_GBC.pickle', 'wb') as file:
         pickle.dump(model, file)
