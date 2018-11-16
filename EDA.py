@@ -37,15 +37,21 @@ def glob_data(extension='.csv', folder=getcwd()):
     Returns:
     --------
     files: generator containing all data files found in the folder
+    
+    Example:
+    --------
+    files = globdata(extension='.txt', folder='/my/favorite/dir)
     """
     if type(extension) != str:
         raise TypeError('Extension must be a string')
+    if not extension.startswith('.'):
+        raise ValueError('Extension must start with "."')
     if type(folder) != str:
         raise TypeError('Folder must be a string')
     if folder != getcwd():
         if ('\\' not in folder):
             raise ValueError('Path should be specified with / or \\ only')
-        if folder.endswith(('\\')):
+        if folder.endswith(('\\', '/')):
             raise ValueError('Path should not end with a separator')
     files = peekable(iglob(fr'{folder}\*{extension}'))
     if files.peek('empty') == 'empty': # Returns empty if files contains no items
@@ -60,16 +66,21 @@ def corr_matrix(iterable):
     Arguments
     ---------
     iterator: iterable containing data file names
+    List, tuple, generator, etc.
 
     Yields
     ------
     Generator containing:
-    ax: matplotlib ax element of correlation matrix
+    fig: matplotlib fig element of correlation matrix
 
     Example
     -------
     figs = corr_matrix(('filea', 'fileb', 'filec'))
     """
+    try:
+        iterator = iter(iterable)
+    except TypeError:
+        print('Input to corr_matrix must be an iterable collection of filepaths.')
     sns.set(style='white', font='monospace')
     for data in iterable:
         df = pd.read_csv(data).select_dtypes(include='number')
@@ -95,12 +106,16 @@ def ECDF(iterable):
     Yields
     ------
     Generator containing:
-    ax: matplotlib ax element of ECDF, 1 per file
+    fig: matplotlib fig element of ECDF, 1 per file
 
     Example
     -------
     ecdfs = ECDF(('filea', 'fileb', 'filec'))
     """
+    try:
+        iterator = iter(iterable)
+    except TypeError:
+        print('Input to ECDF must be an iterable collection of filepaths.')
     sns.set(style='ticks', font='monospace')
     for file in iterable:
         data = pd.read_csv(file).select_dtypes(include='number')
@@ -130,6 +145,10 @@ def figs_to_pdf(iterable, filename='___.pdf'):
     -------
     figs_to_pdf((fig1, fig2, fig3), 'test.pdf')
     """
+    try:
+        iterator = iter(iterable)
+    except TypeError:
+        print('Input to figs_to_pdf must be an iterable collection of matplotlib figs.')
     if type(filename) != str:
         raise TypeError('filename must be a string')
     if '.pdf' not in filename:
@@ -145,5 +164,5 @@ if __name__ == '__main__':
     matrices = corr_matrix(files)
     files = glob_data(folder=r'C:\Users\pattersonrb\PyProjects\MegaHand\EMG_Classification_Matlab\Data\TrainingData')
     plots = ECDF(files)
-    figs_to_pdf(matrices, r'C:\Users\pattersonrb\PyProjects\MegaHand\EMG_Classification_Matlab\Data\TrainingData\corr_matrices.pdf')
-    figs_to_pdf(plots, r'C:\Users\pattersonrb\PyProjects\MegaHand\EMG_Classification_Matlab\Data\TrainingData\ECDFs.pdf')
+    _ = figs_to_pdf(matrices, r'C:\Users\pattersonrb\PyProjects\MegaHand\EMG_Classification_Matlab\Data\TrainingData\corr_matrices.pdf')
+    _ = figs_to_pdf(plots, r'C:\Users\pattersonrb\PyProjects\MegaHand\EMG_Classification_Matlab\Data\TrainingData\ECDFs.pdf')
