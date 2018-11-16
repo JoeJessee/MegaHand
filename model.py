@@ -50,28 +50,28 @@ if __name__ == '__main__':
     X_test = data_test.drop('Action', axis=1).values
 
     # Establish pipeline
-    pl = Pipeline([('int', PolynomialFeatures()),
-                   ('scale', RobustScaler()),
+    pl = Pipeline([('int', PolynomialFeatures(include_bias=False, interaction_only=True)),
+                   #('scale', RobustScaler()),
                    ('pca', IncrementalPCA(n_components=7, whiten=True)),
                    ('clf', GradientBoostingClassifier())
                    ])
     
     # establish gridsearchcv, cv=3 to save on computation
-    param_grid = {'int__interaction_only': [True, False],
-                  'int__include_bias': [True, False]}
-    cv = GridSearchCV(pl, param_grid=param_grid, cv=3)
+    #param_grid = {'int__interaction_only': [True, False],
+    #              'int__include_bias': [True, False]}
+    #cv = GridSearchCV(pl, param_grid=param_grid, cv=3)
 
     # train and retrieve best_parameters
-    cv.fit(X_train, y_train)
-    print(cv.best_params_)
-    model = cv.best_estimator_
+    pl.fit(X_train, y_train)
+    #print(cv.best_params_)
+    #model = cv.best_estimator_
 
     # predict and score
-    y_predict = model.predict(X_test)
-    print(model.score(X_test, y_test))
+    y_predict = pl.predict(X_test)
+    print(pl.score(X_test, y_test))
     report = pd.DataFrame.from_dict(classification_report(y_test, y_predict, output_dict=True), orient='index')
-    report.to_csv(r'c:\users\pattersonrb\pyprojects\megahand\models\int_robustscaler_ipca_GBC.csv')
+    report.to_csv(r'c:\users\pattersonrb\pyprojects\megahand\models\int_ipca_GBC.csv')
 
     # pickle model
-    with open(r'c:\users\pattersonrb\pyprojects\megahand\models\int_robustscaler_ipca_GBC.pickle', 'wb') as file:
-        pickle.dump(model, file)
+    with open(r'c:\users\pattersonrb\pyprojects\megahand\models\int_ipca_GBC.pickle', 'wb') as file:
+        pickle.dump(pl, file)
