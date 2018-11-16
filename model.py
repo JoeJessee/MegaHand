@@ -4,8 +4,8 @@
 import pandas as pd
 import numpy as np
 from EDA import glob_data
-from sklearn.preprocessing import PolynomialFeatures, RobustScaler
-from sklearn.decomposition import IncrementalPCA
+from sklearn.preprocessing import PolynomialFeatures, RobustScaler, MinMaxScaler
+from sklearn.feature_selection import SelectKBest, chi2
 from sklearn.ensemble import GradientBoostingClassifier
 from sklearn.pipeline import Pipeline
 from sklearn.model_selection import GridSearchCV
@@ -51,27 +51,26 @@ if __name__ == '__main__':
 
     # Establish pipeline
     pl = Pipeline([('int', PolynomialFeatures(include_bias=False, interaction_only=True)),
-                   ('scale', RobustScaler()),
-                   #('pca', IncrementalPCA(n_components=7, whiten=True)),
+                   ('scale', MinMaxScaler()),
+                   ('select', SelectKBest(chi2)), 
                    ('clf', GradientBoostingClassifier())
                    ])
     
     # establish gridsearchcv, cv=3 to save on computation
-    #param_grid = {'int__interaction_only': [True, False],
-    #              'int__include_bias': [True, False]}
-    #cv = GridSearchCV(pl, param_grid=param_grid, cv=3)
+    param_grid = {'select__k': [5, 7, 10]}
+    cv = GridSearchCV(pl, param_grid=param_grid, cv=3)
 
     # train and retrieve best_parameters
-    pl.fit(X_train, y_train)
-    #print(cv.best_params_)
-    #model = cv.best_estimator_
+    cv.fit(X_train, y_train)
+    print(cv.best_params_)
+    model = cv.best_estimator_
 
     # predict and score
-    y_predict = pl.predict(X_test)
-    print(pl.score(X_test, y_test))
+    y_predict = model.predict(X_test)
+    print(model.score(X_test, y_test))
     report = pd.DataFrame.from_dict(classification_report(y_test, y_predict, output_dict=True), orient='index')
-    report.to_csv(r'c:\users\pattersonrb\pyprojects\megahand\models\int_ipca_GBC.csv')
+    report.to_csv(r'c:\users\pattersonrb\pyprojects\megahand\models\int_MinMax_kbest_GBC.csv')
 
     # pickle model
-    with open(r'c:\users\pattersonrb\pyprojects\megahand\models\int_ipca_GBC.pickle', 'wb') as file:
-        pickle.dump(pl, file)
+    with open(r'c:\users\pattersonrb\pyprojects\megahand\models\int_MinMax_kbest_GBC.pickle', 'wb') as file:
+        pickle.dump(model, file)
