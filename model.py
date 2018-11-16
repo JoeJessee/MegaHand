@@ -50,25 +50,25 @@ if __name__ == '__main__':
     # Establish pipeline
     pl = Pipeline([('scale', RobustScaler()),
                    ('pca', IncrementalPCA(n_components=7, whiten=True)),
-                   ('clf', RandomForestClassifier())
+                   ('clf', GradientBoostingClassifier())
                    ])
     
-    # Establish GridSearchCV, cv=3 to save on computation
+    # establish gridsearchcv, cv=3 to save on computation
     # param_grid = {'clf__n_estimators': [int(i) for i in np.linspace(100, 1100, 5)]}
-    # cv = GridSearchCV(pl, param_grid=param_grid, cv=3)
+    # cv = gridsearchcv(pl, param_grid=param_grid, cv=3)
 
-    # Train and retrieve best_parameters
+    # train and retrieve best_parameters
     pl.fit(X_train, y_train)
     # print(cv.best_params_)
     # model = cv.best_estimator_
 
-    # Predict and score
+    # predict and score
     y_predict = pl.predict(X_test)
     print(pl.score(X_test, y_test))
     report = pd.DataFrame.from_dict(classification_report(y_test, y_predict, output_dict=True), orient='index')
-    report.to_csv(r'C:\Users\pattersonrb\PyProjects\MegaHand\Models\RobustScaler_iPCA_RFC.csv')
+    report.to_csv(r'c:\users\pattersonrb\pyprojects\megahand\models\robustscaler_ipca_gbc.csv')
 
-    # Pickle model
-    with open(r'C:\Users\pattersonrb\PyProjects\MegaHand\Models\RobustScaler_iPCA_RFC.pickle', 'wb') as file:
+    # pickle model
+    with open(r'c:\users\pattersonrb\pyprojects\megahand\models\robustscaler_ipca_gbc.pickle', 'wb') as file:
         pickle.dump(pl, file)
     
