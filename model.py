@@ -29,7 +29,7 @@ from sklearn.preprocessing import PolynomialFeatures, RobustScaler
 from sklearn.ensemble import GradientBoostingClassifier
 from sklearn.pipeline import Pipeline
 from sklearn.model_selection import GridSearchCV
-from sklearn.metrics import classification_report
+from sklearn.metrics import classification_report, confusion_matrix
 import pickle
 
 def concat_files(iterable):
@@ -56,6 +56,26 @@ def concat_files(iterable):
         data.append(pd.read_csv(file))
     df = pd.concat(data, ignore_index=True)
     return df
+
+def save_csv(data, path="data.csv"):
+    """ Saves input data as a csv to path
+    
+    Arguments:
+    ----------
+    data: pd.DataFrame, np.ndarray, dict, list
+        Data to be written to csv file.
+        For dict, keys are column names and values are column values
+        For list, each element is treated as a row
+    path: str, default: 'data.csv'
+        String containing path to desired save file. 
+        Must end in '.csv.'
+
+    Returns:
+    --------
+    True, if successful
+
+    """
+    if type(data) == pd.core.frame.DataFrame
 
 if __name__ == '__main__':
     # Read Data
@@ -94,8 +114,8 @@ if __name__ == '__main__':
     y_predict = model.predict(X_test)
     print(model.score(X_test, y_test))
     report = pd.DataFrame.from_dict(classification_report(y_test, y_predict, output_dict=True), orient='index')
-    report.to_csv(r'c:\users\pattersonrb\pyprojects\megahand\models\int_robust_lSVC.csv')
+    report.to_csv(r'c:\users\pattersonrb\pyprojects\megahand\models\final_1.csv')
 
     # pickle model
-    with open(r'c:\users\pattersonrb\pyprojects\megahand\models\int_robust_lSVC.pickle', 'wb') as file:
+    with open(r'c:\users\pattersonrb\pyprojects\megahand\models\final_1.pickle', 'wb') as file:
         pickle.dump(model, file)
