@@ -106,9 +106,9 @@ if __name__ == '__main__':
     cv = GridSearchCV(pl, param_grid=param_grid, cv=3)
 
     # train and retrieve best_parameters
-    pl.fit(X_train, y_train)
-    #print(cv.best_params_)
-    model = pl
+    cv.fit(X_train, y_train)
+    print(cv.best_params_)
+    model = cv.best_estimator_
 
     # predict and score
     y_predict = model.predict(X_test)
