@@ -57,8 +57,8 @@ def concat_files(iterable):
     df = pd.concat(data, ignore_index=True)
     return df
 
-def save_csv(data, path="data.csv"):
-    """ Saves input data as a csv to path
+"""def save_csv(data, path="data.csv"):
+    Saves input data as a csv to path
     
     Arguments:
     ----------
@@ -74,8 +74,7 @@ def save_csv(data, path="data.csv"):
     --------
     True, if successful
 
-    """
-    if type(data) == pd.core.frame.DataFrame
+    if type(data) == pd.core.frame.DataFrame"""
 
 if __name__ == '__main__':
     # Read Data
@@ -115,7 +114,7 @@ if __name__ == '__main__':
     print(model.score(X_test, y_test))
     report = pd.DataFrame.from_dict(classification_report(y_test, y_predict, output_dict=True), orient='index')
     report.to_csv(r'c:\users\pattersonrb\pyprojects\megahand\models\final_1.csv')
-
+    matrix = pd.DataFrame(confusion_matrix(y_test, y_predict)
     # pickle model
     with open(r'c:\users\pattersonrb\pyprojects\megahand\models\final_1.pickle', 'wb') as file:
         pickle.dump(model, file)
