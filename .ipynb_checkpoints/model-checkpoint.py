@@ -29,7 +29,7 @@ from sklearn.preprocessing import PolynomialFeatures, RobustScaler
 from sklearn.ensemble import GradientBoostingClassifier
 from sklearn.pipeline import Pipeline
 from sklearn.model_selection import GridSearchCV
-from sklearn.metrics import classification_report, confusion_matrix
+from sklearn.metrics import classification_report
 import pickle
 
 def concat_files(iterable):
@@ -60,17 +60,16 @@ def concat_files(iterable):
 if __name__ == '__main__':
     # Read Data
     # Folder path should be location of training data on your system
-    data_train = pd.read_csv(r'/Users/noahlevi/MegaHand-1/EMG_Classification_Matlab/Data/TrainingData/TrainingDataset.txt')
+    data_train = pd.read_csv(r'C:\Users\pattersonrb\PyProjects\MegaHand\EMG_Classification_Matlab\Data\TrainingData\TrainingDataset.txt')
     y_train = data_train.Action.values
     X_train = data_train.drop('Action', axis=1).values
 
     # Test Data
     # Folder path should be location of testing data on your system
-    file_list = glob_data(folder=r'/Users/noahlevi/MegaHand-1/EMG_Classification_Matlab/Data/TestingData')
+    file_list = glob_data(folder=r'C:\Users\pattersonrb\PyProjects\MegaHand\EMG_Classification_Matlab\Data\TestingData')
     data_test = concat_files(file_list)
     y_test = data_test.Action.values
     X_test = data_test.drop('Action', axis=1).values
-    labels = data_test.columns
 
     # Establish pipeline
     pl = Pipeline([('int', PolynomialFeatures(include_bias=False, interaction_only=True)),
@@ -87,16 +86,16 @@ if __name__ == '__main__':
     cv = GridSearchCV(pl, param_grid=param_grid, cv=3)
 
     # train and retrieve best_parameters
-    cv.fit(X_train, y_train)
-    print(cv.best_params_)
-    model = cv.best_estimator_
+    pl.fit(X_train, y_train)
+    #print(cv.best_params_)
+    model = pl
 
     # predict and score
     y_predict = model.predict(X_test)
     print(model.score(X_test, y_test))
     report = pd.DataFrame.from_dict(classification_report(y_test, y_predict, output_dict=True), orient='index')
-    report.to_csv(r'/Users/noahlevi/MegaHand-1/Models/final_1.csv')
+    report.to_csv(r'c:\users\pattersonrb\pyprojects\megahand\models\int_robust_lSVC.csv')
 
     # pickle model
-    with open(r'/Users/noahlevi/MegaHand-1/Models/final_1.pickle', 'wb') as file:
+    with open(r'c:\users\pattersonrb\pyprojects\megahand\models\int_robust_lSVC.pickle', 'wb') as file:
         pickle.dump(model, file)
