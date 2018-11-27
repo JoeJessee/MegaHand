@@ -89,6 +89,7 @@ if __name__ == '__main__':
     data_test = concat_files(file_list)
     y_test = data_test.Action.values
     X_test = data_test.drop('Action', axis=1).values
+    labels = data_test.columns
 
     # Establish pipeline
     pl = Pipeline([('int', PolynomialFeatures(include_bias=False, interaction_only=True)),
@@ -114,7 +115,7 @@ if __name__ == '__main__':
     print(model.score(X_test, y_test))
     report = pd.DataFrame.from_dict(classification_report(y_test, y_predict, output_dict=True), orient='index')
     report.to_csv(r'c:\users\pattersonrb\pyprojects\megahand\models\final_1.csv')
-    matrix = pd.DataFrame(confusion_matrix(y_test, y_predict)
+    
     # pickle model
     with open(r'c:\users\pattersonrb\pyprojects\megahand\models\final_1.pickle', 'wb') as file:
         pickle.dump(model, file)
