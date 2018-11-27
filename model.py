@@ -57,25 +57,6 @@ def concat_files(iterable):
     df = pd.concat(data, ignore_index=True)
     return df
 
-"""def save_csv(data, path="data.csv"):
-    Saves input data as a csv to path
-    
-    Arguments:
-    ----------
-    data: pd.DataFrame, np.ndarray, dict, list
-        Data to be written to csv file.
-        For dict, keys are column names and values are column values
-        For list, each element is treated as a row
-    path: str, default: 'data.csv'
-        String containing path to desired save file. 
-        Must end in '.csv.'
-
-    Returns:
-    --------
-    True, if successful
-
-    if type(data) == pd.core.frame.DataFrame"""
-
 if __name__ == '__main__':
     # Read Data
     # Folder path should be location of training data on your system
@@ -115,7 +96,7 @@ if __name__ == '__main__':
     print(model.score(X_test, y_test))
     report = pd.DataFrame.from_dict(classification_report(y_test, y_predict, output_dict=True), orient='index')
     report.to_csv(r'c:\users\pattersonrb\pyprojects\megahand\models\final_1.csv')
-    
+
     # pickle model
     with open(r'c:\users\pattersonrb\pyprojects\megahand\models\final_1.pickle', 'wb') as file:
         pickle.dump(model, file)
