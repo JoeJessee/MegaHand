@@ -48,11 +48,11 @@ def glob_data(extension='.csv', folder=getcwd()):
         raise ValueError('Extension must start with "."')
     if type(folder) != str:
         raise TypeError('Folder must be a string')
-    if folder != getcwd():
+    """if folder != getcwd():
         if ('\\' not in folder):
             raise ValueError('Path should be specified with / or \\ only')
         if folder.endswith(('\\', '/')):
-            raise ValueError('Path should not end with a separator')
+            raise ValueError('Path should not end with a separator')"""
     files = peekable(iglob(fr'{folder}\*{extension}'))
     if files.peek('empty') == 'empty': # Returns empty if files contains no items
         raise ValueError(f'No {extension} files found at {folder}')
