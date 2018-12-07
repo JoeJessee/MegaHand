@@ -1,0 +1,47 @@
+---
+title: "Megahand_Presentation"
+author: "Joe"
+date: "12/6/2018"
+output: slidy_presentation
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+## R Markdown
+
+This is an R Markdown presentation. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+
+When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document.
+
+## Slide with Bullets
+
+Package load and Install
+```{r}
+# install.packages("tidyverse")
+# install.packages("tensorflow", dependencies = TRUE)
+# install.packages("keras", dependencies = TRUE)
+# install.packages("reticulate", dependencies = TRUE)
+
+library(tidyverse)
+library(reticulate)
+library(keras)
+```
+
+```{python}
+# Library import
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+import rpytools as rpy
+```
+
+## Slide with R Output
+```{r}
+source_python("TrainingDataGrabber.py")
+as.data.frame(Training_Data_Files)
+```
+
+## Slide with Plot
+

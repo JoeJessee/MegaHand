@@ -71,7 +71,7 @@ as.data.frame(Training_Data_Files)
 
 Next, I used the purrr package from R to apply a function I made in R that tidys the data (removing extraneous columns and formatting) and then creates a pre-set visualization for all of the files from the list (that was made in Python.)
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 source("C:/Users/joeje/Desktop/Academics/FAES/Intro_to_Python/MEGAHAND/Megamunge_Jitter.R")
 library(purrr)
 setwd('TrainingData')
