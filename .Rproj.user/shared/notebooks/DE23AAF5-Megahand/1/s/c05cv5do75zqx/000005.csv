@@ -1,0 +1,2 @@
+"0","reticulate::source_python(""TrainingDataGrabber.py"")"
+"0","as.data.frame(Training_Data_Files)"

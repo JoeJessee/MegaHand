@@ -1,0 +1,5 @@
+"0","reticulate::source_python(""TrainingDataGrabber.py"")
+"
+"1","['Chuck Grip.csv', 'Fine Pinch.csv', 'H. Open.csv', 'Hook Grip.csv', 'Key Grip.csv', 'No Move.csv', 'Power Grip.csv', 'Thumb Enclosed.csv', 'Tool Grip.csv', 'W. Abduction.csv', 'W. Adduction.csv', 'W. Extension.csv', 'W. Flexion.csv', 'W. Pronation.csv', 'W. Supination.csv']
+"
+"0","as.data.frame(Training_Data_Files)"

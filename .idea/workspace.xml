@@ -1,0 +1,367 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="00329523-fed4-4282-a5ce-1f6661ce57cc" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/Models/MinMaxScaler_PCA_GaussianNB.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Models/MinMaxScaler_PCA_GaussianNB.pickle" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Models/RobustScaler_PCA_GaussianNB.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Models/RobustScaler_PCA_GaussianNB.pickle" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Models/RobustScaler_iPCA_GaussianNB.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Models/RobustScaler_iPCA_GaussianNB.pickle" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Models/RobustScaler_iPCA_RFC.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Models/RobustScaler_iPCA_RFC.pickle" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Models/StandardScaler_PCA_GaussianNB.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Models/StandardScaler_PCA_GaussianNB.pickle" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Models/int_MinMax_kbest_GBC.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Models/int_MinMax_kbest_GBC.pickle" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Models/int_ipca_GBC.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Models/int_ipca_GBC.pickle" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Models/int_robust_lSVC.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Models/int_robust_lSVC.pickle" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Models/int_robustscaler_ipca_GBC.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Models/int_robustscaler_ipca_GBC.pickle" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Models/robustscaler_ipca_LogReg.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Models/robustscaler_ipca_LogReg.pickle" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Models/robustscaler_ipca_gbc.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Models/robustscaler_ipca_gbc.pickle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.vscode/settings.json" beforeDir="false" afterPath="$PROJECT_DIR$/.vscode/settings.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/EDA.py" beforeDir="false" afterPath="$PROJECT_DIR$/EDA.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/EMG_Classification_Matlab/CodeGeneration/CodeGenerationPrep.mlx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/EMG_Classification_Matlab/CodeGeneration/bigClassifier.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/EMG_Classification_Matlab/CodeGeneration/callscript.m" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/EMG_Classification_Matlab/CodeGeneration/classifyEMG.m" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/EMG_Classification_Matlab/CodeGeneration/classifyEMG_1.m" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/EMG_Classification_Matlab/CodeGeneration/classifyEMG_2.m" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/EMG_Classification_Matlab/CodeGeneration/generateFeatures.m" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/EMG_Classification_Matlab/CodeGeneration/myClassifier.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/EMG_Classification_Matlab/CodeGeneration/testdata.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/EMG_Classification_Matlab/Data/TrainingData/ECDFs.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/EMG_Classification_Matlab/Data/TrainingData/ECDFs.pdf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/EMG_Classification_Matlab/Data/TrainingData/corr_matrices.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/EMG_Classification_Matlab/Data/TrainingData/corr_matrices.pdf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/EMG_Classification_Matlab/Data/UnknownActionData/Experiment_03.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/EMG_Classification_Matlab/Data/UnknownActionData/Experiment_07.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/EMG_Classification_Matlab/Data/UnknownActionData/Experiment_08.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/EMG_Classification_Matlab/Data/UnknownActionData/test.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/EMG_Classification_Matlab/Data/UnknownActionData/test2.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/EMG_Classification_Matlab/Data/UnknownActionData/test3.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/EMG_Classification_Matlab/Data/UnknownActionData/test4.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/EMG_Classification_Matlab/EMG_signalprocessing_livescript.mlx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/EMG_Classification_Matlab/LPFilter.m" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/EMG_Classification_Matlab/classifyEMG.m" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/EMG_Classification_Matlab/generateFeatures.m" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/EMG_Classification_Matlab/makeVariableNames.m" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/EMG_Classification_Matlab/myClassifier.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/EMG_Classification_Matlab/trainSPClassifier.m" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MEGAHAND.Rproj" beforeDir="false" afterPath="$PROJECT_DIR$/MEGAHAND.Rproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Megahand.rmd" beforeDir="false" afterPath="$PROJECT_DIR$/Megahand.rmd" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Megamunge_PDF_Report_Maker.R" beforeDir="false" afterPath="$PROJECT_DIR$/Megamunge_PDF_Report_Maker.R" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/model.py" beforeDir="false" afterPath="$PROJECT_DIR$/model.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/test.pdf" afterDir="false" />
+    </list>
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FUSProjectUsageTrigger">
+    <session id="-1450621641">
+      <usages-collector id="statistics.lifecycle.project">
+        <counts>
+          <entry key="project.closed" value="3" />
+          <entry key="project.open.time.0" value="1" />
+          <entry key="project.open.time.14" value="1" />
+          <entry key="project.open.time.8" value="1" />
+          <entry key="project.opened" value="3" />
+        </counts>
+      </usages-collector>
+    </session>
+    <session id="1956976922">
+      <usages-collector id="statistics.lifecycle.project">
+        <counts>
+          <entry key="project.closed" value="2" />
+          <entry key="project.open.time.10" value="1" />
+          <entry key="project.open.time.3" value="1" />
+          <entry key="project.opened" value="2" />
+        </counts>
+      </usages-collector>
+    </session>
+  </component>
+  <component name="FileEditorManager">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/TrainingDataGrabber.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="85">
+              <caret line="5" lean-forward="true" selection-start-line="5" selection-end-line="5" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/model.py" />
+        <option value="$APPLICATION_CONFIG_DIR$/idea.properties" />
+        <option value="$PROJECT_DIR$/TrainingDataGrabber.py" />
+        <option value="$PROJECT_DIR$/Megahand.rmd" />
+      </list>
+    </option>
+  </component>
+  <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsGulpfileManager">
+    <detection-done>true</detection-done>
+    <sorting>DEFINITION_ORDER</sorting>
+  </component>
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="85" />
+    <option name="y" value="25" />
+    <option name="width" value="1750" />
+    <option name="height" value="970" />
+  </component>
+  <component name="ProjectInspectionProfilesVisibleTreeState">
+    <entry key="Project Default">
+      <profile-state>
+        <expanded-state>
+          <State />
+          <State>
+            <id>Code style issuesJavaScript</id>
+          </State>
+          <State>
+            <id>Flow type checkerJavaScript</id>
+          </State>
+          <State>
+            <id>General</id>
+          </State>
+          <State>
+            <id>GeneralJavaScript</id>
+          </State>
+          <State>
+            <id>Internationalization</id>
+          </State>
+          <State>
+            <id>JSON and JSON5</id>
+          </State>
+          <State>
+            <id>JavaScript</id>
+          </State>
+          <State>
+            <id>Node.jsJavaScript</id>
+          </State>
+          <State>
+            <id>Potentially confusing code constructsJavaScript</id>
+          </State>
+          <State>
+            <id>Puppet</id>
+          </State>
+          <State>
+            <id>Pyramid</id>
+          </State>
+          <State>
+            <id>Python</id>
+          </State>
+          <State>
+            <id>TypeScript</id>
+          </State>
+        </expanded-state>
+        <selected-state>
+          <State>
+            <id>Angular</id>
+          </State>
+        </selected-state>
+      </profile-state>
+    </entry>
+  </component>
+  <component name="ProjectView">
+    <navigator proportions="" version="1">
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="Scope" />
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="MEGAHAND" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Scratches and Consoles" type="1a2a3e82:ScratchProjectViewPane$MyProjectNode" />
+            </path>
+            <path>
+              <item name="MEGAHAND" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Scratches and Consoles" type="1a2a3e82:ScratchProjectViewPane$MyProjectNode" />
+              <item name="Scratches" type="d62648e6:ScratchProjectViewPane$MyRootNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager">
+    <configuration name="TrainingDataGrabber" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="MEGAHAND" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/TrainingDataGrabber.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="true" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Python.TrainingDataGrabber" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="00329523-fed4-4282-a5ce-1f6661ce57cc" name="Default Changelist" comment="" />
+      <created>1543360177145</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1543360177145</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
+    <layout>
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.4992908" visible="true" weight="0.17315437" />
+      <window_info id="Structure" order="1" sideWeight="0.50070924" side_tool="true" weight="0.17114094" />
+      <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Run" order="2" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Version Control" order="8" weight="0.32907802" />
+      <window_info anchor="bottom" id="Database Changes" order="9" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.50201344" side_tool="true" visible="true" weight="0.32907802" />
+      <window_info anchor="bottom" id="Terminal" order="11" sideWeight="0.49932885" weight="0.32907802" />
+      <window_info anchor="bottom" id="Python Console" order="12" sideWeight="0.49798658" visible="true" weight="0.32907802" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="SciView" order="3" />
+      <window_info anchor="right" id="R Graphics" order="4" />
+      <window_info anchor="right" id="R Packages" order="5" />
+      <window_info anchor="right" id="Database" order="6" />
+    </layout>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="RECENTLY_FILTERED_USER_GROUPS">
+                <collection />
+              </option>
+              <option name="RECENTLY_FILTERED_BRANCH_GROUPS">
+                <collection />
+              </option>
+              <option name="COLUMN_ORDER">
+                <list>
+                  <option value="0" />
+                  <option value="1" />
+                  <option value="2" />
+                  <option value="3" />
+                </list>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/model.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="34" column="23" selection-start-line="34" selection-start-column="23" selection-end-line="34" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$APPLICATION_CONFIG_DIR$/idea.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" column="1" selection-start-line="2" selection-start-column="1" selection-end-line="2" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$APPLICATION_CONFIG_DIR$/scratches/Eyyy_waddup.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$APPLICATION_CONFIG_DIR$/scratches/scratch.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$APPLICATION_CONFIG_DIR$/scratches/joel.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$APPLICATION_CONFIG_DIR$/scratches/scratch_2.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Megahand.rmd">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="19" column="48" lean-forward="true" selection-start-line="19" selection-start-column="48" selection-end-line="19" selection-end-column="48" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/TrainingDataGrabber.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" lean-forward="true" selection-start-line="5" selection-end-line="5" />
+        </state>
+      </provider>
+    </entry>
+  </component>
+</project>

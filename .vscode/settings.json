@@ -1,3 +1,4 @@
 {
-    "python.pythonPath": "C:\\Users\\pattersonrb\\conda\\python.exe"
+    "python.pythonPath": "C:\\Users\\pattersonrb\\conda\\python.exe",
+    "python.linting.pylintEnabled": true
 }
