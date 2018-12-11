@@ -25,7 +25,7 @@
 \usepackage{hyperref}
 \hypersetup{unicode=true,
             pdftitle={MEGAHAND},
-            pdfauthor={Joe},
+            pdfauthor={Ryan, John, Noah, Joe},
             pdfborder={0 0 0},
             breaklinks=true}
 \urlstyle{same}  % don't use monospace font for urls
@@ -69,6 +69,7 @@
 \newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
 \newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
 \newcommand{\NormalTok}[1]{#1}
+\usepackage{longtable,booktabs}
 \usepackage{graphicx,grffile}
 \makeatletter
 \def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
@@ -117,7 +118,7 @@
   \title{MEGAHAND}
     \pretitle{\vspace{\droptitle}\centering\huge}
   \posttitle{\par}
-    \author{Joe}
+    \author{Ryan, John, Noah, Joe}
     \preauthor{\centering\large\emph}
   \postauthor{\par}
       \predate{\centering\large\emph}
@@ -128,17 +129,26 @@
 \begin{document}
 \maketitle
 
-\section{Interoperability}\label{interoperability}
+\subsection{R packages}\label{r-packages}
+
+Tidyverse is a meta-package (a pack of packages) that is very commonly
+used in R, and then Tensorflow and Keras are used for Machine Learning.
+According to Martin, Keras was developed for Python, and then the same
+dev developed it for R, so it is a framework that can be used in both
+languages. That being said, we opted for scikit-learn.
 
 \begin{Shaded}
 \begin{Highlighting}[]
 \CommentTok{# install.packages("tidyverse")}
+\CommentTok{# install.packages("tensorflow", dependencies = TRUE)}
+\CommentTok{# install.packages("keras", dependencies = TRUE)}
+
 \KeywordTok{library}\NormalTok{(tidyverse)}
 \end{Highlighting}
 \end{Shaded}
 
 \begin{verbatim}
-## -- Attaching packages ------------------------------------------------------------------ tidyverse 1.2.1 --
+## -- Attaching packages ----------------------------------------------------------------- tidyverse 1.2.1 --
 \end{verbatim}
 
 \begin{verbatim}
@@ -149,10 +159,24 @@
 \end{verbatim}
 
 \begin{verbatim}
-## -- Conflicts --------------------------------------------------------------------- tidyverse_conflicts() --
+## -- Conflicts -------------------------------------------------------------------- tidyverse_conflicts() --
 ## x dplyr::filter() masks stats::filter()
 ## x dplyr::lag()    masks stats::lag()
 \end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# library(tensorflow)}
+\CommentTok{# library(keras)}
+\end{Highlighting}
+\end{Shaded}
+
+\subsection{R package for interoperability with
+Python}\label{r-package-for-interoperability-with-python}
+
+This package includes functions that allow you to reference Python
+objects in your R code, or source Python scripts from within R. I will
+show an example of this shortly.
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -160,6 +184,8 @@
 \KeywordTok{library}\NormalTok{(reticulate)}
 \end{Highlighting}
 \end{Shaded}
+
+\subsection{Reticulate}\label{reticulate}
 
 With the reticulate package in R, Python code can be integrated into R
 documents and used alongside R. This is especially convenient in the
@@ -178,22 +204,45 @@ RMarkdown document format for several reasons:
 \end{itemize}
 
 This particular aspect of our project interested me due to the scale and
-diversity of challenges in interoperability.
+diversity of challenges in interoperability, both of which I have yet to
+fully grasp.
+
+\subsection{Python library imports, but in an RMarkdown
+document}\label{python-library-imports-but-in-an-rmarkdown-document}
+
+Frequently, the autocomplete available with Python functions and syntax
+will work within a Python chunk in an RMarkdown document, but it is not
+seamless yet. The words are, however, highlighted and colored as they
+would be when working within a .py document (despite that not being the
+case in this slidy presentation)
 
 \begin{Shaded}
 \begin{Highlighting}[]
 \ImportTok{import}\NormalTok{ numpy }\ImportTok{as}\NormalTok{ np}
 \ImportTok{import}\NormalTok{ pandas }\ImportTok{as}\NormalTok{ pd}
 \ImportTok{import}\NormalTok{ matplotlib.pyplot }\ImportTok{as}\NormalTok{ plt}
+\ImportTok{import}\NormalTok{ rpytools }\ImportTok{as}\NormalTok{ rpy}
 \end{Highlighting}
 \end{Shaded}
 
-\section{Exploratory Data Analysis and
+\subsection{Exploratory Data Analysis and
 Visualization}\label{exploratory-data-analysis-and-visualization}
 
 This is a Python script that grabs all of the ``.csv'' files in a
 folder, and makes a list of the names. The script is saved as
 ``TrainingDataGrabber.py''
+
+From the documentation for the glob() function:
+
+The glob module finds all the pathnames matching a specified pattern
+according to the rules used by the Unix shell, although results are
+returned in arbitrary order. No tilde expansion is done, but *, ?, and
+character ranges expressed with {[}{]} will be correctly matched. This
+is done by using the os.scandir() and fnmatch.fnmatch() functions in
+concert, and not by actually invoking a subshell. Note that unlike
+fnmatch.fnmatch(), glob treats filenames beginning with a dot (.) as
+special cases. (For tilde and shell variable expansion, use
+os.path.expanduser() and os.path.expandvars().)
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -207,9 +256,12 @@ folder, and makes a list of the names. The script is saved as
 \end{Highlighting}
 \end{Shaded}
 
+\subsection{Using Reticulate to source a Python
+Script}\label{using-reticulate-to-source-a-python-script}
+
 Here, I used R to source the Python script, create a list object
 containing all of the file names in the ``TrainingData'' folder, and
-then coerced an R DataFrame from that list for display.
+then coerced an R DataFrame from that Python list for display.
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -229,28 +281,35 @@ then coerced an R DataFrame from that list for display.
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{as.data.frame}\NormalTok{(Training_Data_Files)}
+\NormalTok{knitr}\OperatorTok{::}\KeywordTok{kable}\NormalTok{(}\KeywordTok{as.data.frame}\NormalTok{(Training_Data_Files))}
 \end{Highlighting}
 \end{Shaded}
 
-\begin{verbatim}
-##    Training_Data_Files
-## 1       Chuck Grip.csv
-## 2       Fine Pinch.csv
-## 3          H. Open.csv
-## 4        Hook Grip.csv
-## 5         Key Grip.csv
-## 6          No Move.csv
-## 7       Power Grip.csv
-## 8   Thumb Enclosed.csv
-## 9        Tool Grip.csv
-## 10    W. Abduction.csv
-## 11    W. Adduction.csv
-## 12    W. Extension.csv
-## 13      W. Flexion.csv
-## 14    W. Pronation.csv
-## 15   W. Supination.csv
-\end{verbatim}
+\begin{longtable}[]{@{}l@{}}
+\toprule
+Training\_Data\_Files\tabularnewline
+\midrule
+\endhead
+Chuck Grip.csv\tabularnewline
+Fine Pinch.csv\tabularnewline
+H. Open.csv\tabularnewline
+Hook Grip.csv\tabularnewline
+Key Grip.csv\tabularnewline
+No Move.csv\tabularnewline
+Power Grip.csv\tabularnewline
+Thumb Enclosed.csv\tabularnewline
+Tool Grip.csv\tabularnewline
+W. Abduction.csv\tabularnewline
+W. Adduction.csv\tabularnewline
+W. Extension.csv\tabularnewline
+W. Flexion.csv\tabularnewline
+W. Pronation.csv\tabularnewline
+W. Supination.csv\tabularnewline
+\bottomrule
+\end{longtable}
+
+\subsection{Using R for data tidying and
+visualization}\label{using-r-for-data-tidying-and-visualization}
 
 Next, I used the purrr package from R to apply a function I made in R
 that tidys the data (removing extraneous columns and formatting) and
@@ -270,116 +329,105 @@ then creates a pre-set visualization for all of the files from the list
 ## [[1]]
 \end{verbatim}
 
-\includegraphics{Megahand_files/figure-latex/unnamed-chunk-5-1.pdf}
+\includegraphics{Megahand_files/figure-latex/unnamed-chunk-6-1.pdf}
 
 \begin{verbatim}
 ## 
 ## [[2]]
 \end{verbatim}
 
-\includegraphics{Megahand_files/figure-latex/unnamed-chunk-5-2.pdf}
+\includegraphics{Megahand_files/figure-latex/unnamed-chunk-6-2.pdf}
 
 \begin{verbatim}
 ## 
 ## [[3]]
 \end{verbatim}
 
-\includegraphics{Megahand_files/figure-latex/unnamed-chunk-5-3.pdf}
+\includegraphics{Megahand_files/figure-latex/unnamed-chunk-6-3.pdf}
 
 \begin{verbatim}
 ## 
 ## [[4]]
 \end{verbatim}
 
-\includegraphics{Megahand_files/figure-latex/unnamed-chunk-5-4.pdf}
+\includegraphics{Megahand_files/figure-latex/unnamed-chunk-6-4.pdf}
 
 \begin{verbatim}
 ## 
 ## [[5]]
 \end{verbatim}
 
-\includegraphics{Megahand_files/figure-latex/unnamed-chunk-5-5.pdf}
+\includegraphics{Megahand_files/figure-latex/unnamed-chunk-6-5.pdf}
 
 \begin{verbatim}
 ## 
 ## [[6]]
 \end{verbatim}
 
-\includegraphics{Megahand_files/figure-latex/unnamed-chunk-5-6.pdf}
+\includegraphics{Megahand_files/figure-latex/unnamed-chunk-6-6.pdf}
 
 \begin{verbatim}
 ## 
 ## [[7]]
 \end{verbatim}
 
-\includegraphics{Megahand_files/figure-latex/unnamed-chunk-5-7.pdf}
+\includegraphics{Megahand_files/figure-latex/unnamed-chunk-6-7.pdf}
 
 \begin{verbatim}
 ## 
 ## [[8]]
 \end{verbatim}
 
-\includegraphics{Megahand_files/figure-latex/unnamed-chunk-5-8.pdf}
+\includegraphics{Megahand_files/figure-latex/unnamed-chunk-6-8.pdf}
 
 \begin{verbatim}
 ## 
 ## [[9]]
 \end{verbatim}
 
-\includegraphics{Megahand_files/figure-latex/unnamed-chunk-5-9.pdf}
+\includegraphics{Megahand_files/figure-latex/unnamed-chunk-6-9.pdf}
 
 \begin{verbatim}
 ## 
 ## [[10]]
 \end{verbatim}
 
-\includegraphics{Megahand_files/figure-latex/unnamed-chunk-5-10.pdf}
+\includegraphics{Megahand_files/figure-latex/unnamed-chunk-6-10.pdf}
 
 \begin{verbatim}
 ## 
 ## [[11]]
 \end{verbatim}
 
-\includegraphics{Megahand_files/figure-latex/unnamed-chunk-5-11.pdf}
+\includegraphics{Megahand_files/figure-latex/unnamed-chunk-6-11.pdf}
 
 \begin{verbatim}
 ## 
 ## [[12]]
 \end{verbatim}
 
-\includegraphics{Megahand_files/figure-latex/unnamed-chunk-5-12.pdf}
+\includegraphics{Megahand_files/figure-latex/unnamed-chunk-6-12.pdf}
 
 \begin{verbatim}
 ## 
 ## [[13]]
 \end{verbatim}
 
-\includegraphics{Megahand_files/figure-latex/unnamed-chunk-5-13.pdf}
+\includegraphics{Megahand_files/figure-latex/unnamed-chunk-6-13.pdf}
 
 \begin{verbatim}
 ## 
 ## [[14]]
 \end{verbatim}
 
-\includegraphics{Megahand_files/figure-latex/unnamed-chunk-5-14.pdf}
+\includegraphics{Megahand_files/figure-latex/unnamed-chunk-6-14.pdf}
 
 \begin{verbatim}
 ## 
 ## [[15]]
 \end{verbatim}
 
-\includegraphics{Megahand_files/figure-latex/unnamed-chunk-5-15.pdf}
-
-\section{Machine Learning}\label{machine-learning}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\KeywordTok{install.packages}\NormalTok{(}\StringTok{"tensorflow"}\NormalTok{, }\DataTypeTok{dependencies =} \OtherTok{TRUE}\NormalTok{)}
-\KeywordTok{install.packages}\NormalTok{(}\StringTok{"keras"}\NormalTok{, }\DataTypeTok{dependencies =} \OtherTok{TRUE}\NormalTok{)}
-\KeywordTok{library}\NormalTok{(tensorflow)}
-\KeywordTok{library}\NormalTok{(keras)}
-\end{Highlighting}
-\end{Shaded}
+\includegraphics{Megahand_files/figure-latex/unnamed-chunk-6-15.pdf}
 
 
 \end{document}

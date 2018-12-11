@@ -1,5 +1,5 @@
 ---
-title: "Megahand Presentation"
+title: "Megahand"
 author: "Ryan, John, Noah, Joe"
 date: "12/6/2018"
 output: slidy_presentation
@@ -8,6 +8,33 @@ output: slidy_presentation
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
+
+## OpenBionics Brunel Hand 2.0 Python Project (codename: MEGAHAND)
+
+Our project seeks to build a workflow for reading skin-surface EMG (sEMG) signals in real time to control a robotic prosthetic hand with a useful degree of accuracy, and with a framework applicable to controlling hands made from stronger materials and for diversified prosthetic applications in the future. We sought to use exclusively open-source tools as part of an effort to make this work cost-effective for patients that may want one of their own. This keeps with the ethos of OpenBionics, and with learning about Python!
+
+![9 Axes of motion](Hand_Demo.gif)
+
+![Meaningfully functional for patients](Hand_Demo2.gif)
+
+
+## Hand Parts 
+
+![3D-Printed plastic components of hand](3dp_parts.png)
+
+![Circuit Board for Hand Operation](Chestnut_Board.jpg)
+
+## EMG
+
+![This is an example of where electrodes would be placed to pick up the signals from hand movements](Electrode_Placement.jpg)
+
+![As certain muscles contract and as others extend, different signals are produced](EMG_Explanation.gif)
+
+## Data
+
+This produces a large data set of frequency readouts, that is then processed and fed into a machine learning algorithm to classify which sets of readouts correspond to which types of grips
+
+
 
 ## R packages
 
