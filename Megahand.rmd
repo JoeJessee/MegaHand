@@ -3,11 +3,11 @@ title: "MEGAHAND"
 author: "Joe"
 date: "11/8/2018"
 output:
+  html_document: default
+  word_document: default
   pdf_document: 
     fig_caption: yes
     keep_tex: yes
-  word_document: default
-  html_document: default
 ---
 
 ```{r setup, include=FALSE}
@@ -22,8 +22,9 @@ library(tidyverse)
 
 
 # install.packages("reticulate", dependencies = TRUE)
-library(reticulate)
+library("reticulate", lib.loc="~/R/win-library/3.5")
 ```
+
 
 With the reticulate package in R, Python code can be integrated into R documents and used alongside R. This is especially convenient in the RMarkdown document format for several reasons:
 
@@ -34,6 +35,7 @@ With the reticulate package in R, Python code can be integrated into R documents
 * RMarkdown offers flexible export formats including pdf, slides, word, and html
 
 This particular aspect of our project interested me due to the scale and diversity of challenges in interoperability.
+
 
 ```{python}
 import numpy as np
