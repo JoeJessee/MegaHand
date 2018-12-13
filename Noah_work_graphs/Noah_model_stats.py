@@ -9,7 +9,7 @@ import os
 import glob
 path = 'c:\\'
 extension = 'csv'
-os.chdir(path= "/Users/noahlevi/MegaHand-1/Models")
+os.chdir(path= "c:/Users/joeje/Desktop/Academics/FAES/Intro_to_Python/MEGAHAND")
 models = [i for i in glob.glob('*.{}'.format(extension))]
 print(models)
 

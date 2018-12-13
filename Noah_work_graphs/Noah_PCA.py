@@ -11,7 +11,7 @@ import os
 import glob
 path = 'c:\\'
 extension = 'csv'
-os.chdir(path= "/Users/noahlevi/MegaHand-1/EMG_Classification_Matlab/Data/TrainingData/")
+os.chdir(path= "C:/Users/joeje/Desktop/Academics/FAES/Intro_to_Python/MEGAHAND")
 Training_Data_Files = [i for i in glob.glob('*.{}'.format(extension))]
 
 print(Training_Data_Files)
