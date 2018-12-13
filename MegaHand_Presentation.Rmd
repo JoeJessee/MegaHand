@@ -5,18 +5,18 @@ date: "12/6/2018"
 output: slidy_presentation
 ---
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
+```{r setup, include=FALSE, cache=TRUE}
+knitr::opts_chunk$set(echo = TRUE, cache=TRUE)
 ```
 
 ## OpenBionics Brunel Hand 2.0 Python Project (codename: MEGAHAND)
 
 Our project seeks to build a workflow for reading skin-surface EMG (sEMG) signals in real time to control a robotic prosthetic hand with a useful degree of accuracy, and with a framework applicable to controlling hands made from stronger materials and for diversified prosthetic applications in the future. We sought to use exclusively open-source tools as part of an effort to make this work cost-effective for patients that may want one of their own. This keeps with the ethos of OpenBionics, and with learning about Python!
 
-![9 Axes of motion](Hand_Demo.gif)
-
-![Meaningfully functional for patients](Hand_Demo2.gif)
-
+<table>
+<tr>
+<td>![Hand Demo](Hand_Demo.gif)</td><td>![](Hand_Demo2.gif)</td>
+</tr></table>
 
 ## Hand Parts 
 
@@ -32,13 +32,18 @@ Our project seeks to build a workflow for reading skin-surface EMG (sEMG) signal
 
 ## Data
 
-This produces a large data set of frequency readouts, that is then processed and fed into a machine learning algorithm to classify which sets of readouts correspond to which types of grips
+This produces a large data set of potential energy readouts, that is then processed and fed into a machine learning algorithm to classify which sets of readouts correspond to which types of grips. The data is observations across time, and is therefore Time-Series Data. 
 
+```{python}
+import pandas as pd
+ChuckGrip = pd.read_csv("TrainingData/Chuck Grip.csv")
+print(pd.DataFrame.head(ChuckGrip))
+```
 
 
 ## R packages
 
-Tidyverse is a meta-package (a pack of packages) that is very commonly used in R, and then Tensorflow and Keras are used for Machine Learning. According to Martin, Keras was developed for Python, and then the same dev developed it for R, so it is a framework that can be used in both languages. That being said, we opted for scikit-learn.
+Tidyverse is a meta-package (a pack of packages) that is very commonly used in R, and then Tensorflow and Keras are used for Machine Learning. According to Martin, Keras was developed by Francois Chollet for deep learning in Python, but he then moved to develop  R, so it is a framework that can be used in both languages. That being said, we opted for scikit-learn.
 
 ```{r}
 # install.packages("tidyverse")
@@ -50,14 +55,14 @@ library(tidyverse)
 # library(keras)
 ```
 
-## R package for interoperability with Python
-
-This package includes functions that allow you to reference Python objects in your R code, or source Python scripts from within R. I will show an example of this shortly.
+R package for interoperability with Python
 
 ```{r}
 # install.packages("reticulate", dependencies = TRUE)
-library(reticulate)
+library("reticulate", lib.loc="~/R/win-library/3.5")
 ```
+
+This package includes functions that allow you to reference Python objects in your R code, or source Python scripts from within R. I will show an example of this shortly.
 
 
 ## Reticulate
@@ -123,4 +128,27 @@ setwd('TrainingData')
 map(Training_Data_Files, Megamunge)
 ```
 
+## Impressions from EDA
 
+* Different grips correlate to different voltage distributions
+* Developing a classifier should be possible given input uniformity and a discrete number of 
+
+## Principle Component Analysis
+
+```{r eval=FALSE}
+reticulate::source_python("Noah_work_graphs/Noah_PCA.py")
+
+reticulate::source_python("Noah_work_graphs/Noah_model_stats.py")
+```
+
+![PCA Graphs](Noah_work_graphs/Noah_PCA_Graphs.pdf)
+
+## Confusion Matrices
+
+* They Are a visualization of what a model had trouble classifying
+* They are used to assess both the quality of the model, and to point toward certain weaknesses or certain specific classes that a model has trouble with
+
+## Confusion Matrices
+![Raw Confusion Matrix](Confusion_Matrix/Final_Figure_1_raw.png)
+
+![Normalized Confusion Matrix](Confusion_Matrix/Final_Figure_1_normalized.png)
