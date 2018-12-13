@@ -60,13 +60,13 @@ def concat_files(iterable):
 if __name__ == '__main__':
     # Read Data
     # Folder path should be location of training data on your system
-    data_train = pd.read_csv(r'/Users/noahlevi/MegaHand-1/EMG_Classification_Matlab/Data/TrainingData/TrainingDataset.txt')
+    data_train = pd.read_csv(r'C:\Users\pattersonrb\PyProjects\MegaHand\EMG_Classification_Matlab\Data\TrainingData')
     y_train = data_train.Action.values
     X_train = data_train.drop('Action', axis=1).values
 
     # Test Data
     # Folder path should be location of testing data on your system
-    file_list = glob_data(folder=r'/Users/noahlevi/MegaHand-1/EMG_Classification_Matlab/Data/TestingData')
+    file_list = glob_data(folder=r'C:\Users\pattersonrb\PyProjects\MegaHand\EMG_Classification_Matlab\Data\TestingData')
     data_test = concat_files(file_list)
     y_test = data_test.Action.values
     X_test = data_test.drop('Action', axis=1).values
@@ -95,8 +95,8 @@ if __name__ == '__main__':
     y_predict = model.predict(X_test)
     print(model.score(X_test, y_test))
     report = pd.DataFrame.from_dict(classification_report(y_test, y_predict, output_dict=True), orient='index')
-    report.to_csv(r'/Users/noahlevi/MegaHand-1/Models/final_1.csv')
+    report.to_csv(r'C:\Users\pattersonrb\PyProjects\MegaHand\Models\final_1.csv')
 
     # pickle model
-    with open(r'/Users/noahlevi/MegaHand-1/Models/final_1.pickle', 'wb') as file:
+    with open(r'C:\Users\pattersonrb\PyProjects\MegaHand\Models\final_1.pickle', 'wb') as file:
         pickle.dump(model, file)
