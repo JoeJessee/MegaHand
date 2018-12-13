@@ -1,0 +1,15 @@
+"2","Error in py_call_impl(callable, dots$args, dots$keywords) : 
+  TypeError: float() argument must be a string or a number, not 'NoneType'
+
+Detailed traceback: 
+  File ""C:\Users\joeje\ANACON~1\lib\site-packages\matplotlib\pyplot.py"", line 303, in rc
+    matplotlib.rc(*args, **kwargs)
+  File ""C:\Users\joeje\ANACON~1\lib\site-packages\matplotlib\__init__.py"", line 1263, in rc
+    rcParams[key] = v
+  File ""C:\Users\joeje\ANACON~1\lib\site-packages\matplotlib\__init__.py"", line 922, in __setitem__
+    cval = self.validate[key](val)
+  File ""C:\Users\joeje\ANACON~1\lib\site-packages\matplotlib\rcsetup.py"", line 318, in __call__
+    for val in s]
+  File ""C:\Users\joeje\ANACON~1\lib\site-packages\matplotlib\rcsetup.py"", line 318, in <listcomp>
+    for val in s]
+"

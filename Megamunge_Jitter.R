@@ -11,18 +11,25 @@
 
 Megamunge <- function(fname){
   df <- read_csv(fname)
+
+#Simplify Electrode ID's
+colnames(df) <- gsub("rawDataOut", "E", colnames(df))
+
 ## Tidy Pipes
   df %>%
-    select(rawDataOut1:rawDataOut8) %>% 
+    select(E1:E8) %>%
     rownames_to_column(var = "Electrode") %>% 
     gather(Electrode, Readout) -> Grip_Type_Tidy
 
   #View(Grip_Type_Tidy)
-  
-  
+
+## Generate plot titles based on file names
+plot_title <- paste("Signal Intensities for", toString(fname))
+plot_title <- gsub(".csv", "", plot_title)
+                      
 #### Data Visualization
 ggplot(Grip_Type_Tidy, aes(x = Grip_Type_Tidy$Electrode, y=Readout, color = Readout))+ 
-    geom_jitter() +xlab("Electrode") + ylab("Some unit") + ggtitle("Signal Intensity")
+    geom_jitter() +xlab("Electrode (E)") + ylab("Readout (mV)") + ggtitle(plot_title)
   
 }
 

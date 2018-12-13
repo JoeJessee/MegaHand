@@ -1,0 +1,304 @@
+"0","install.packages(""tidyverse"")
+"
+"1","Error in "
+"1","Error in "
+"1",""
+"1",""
+"1",""
+"1",""
+"1","install.packages"
+"1","install.packages"
+"1","install.packages"
+"1","install.packages"
+"1",""
+"1",""
+"1",""
+"1",""
+"1"," : "
+"1"," : "
+"1"," : "
+"1"," : "
+"1",""
+"1",""
+"1",""
+"1",""
+"1","Updating loaded packages"
+"1","Updating loaded packages"
+"1","Updating loaded packages"
+"1","Updating loaded packages"
+"1",""
+"1",""
+"1",""
+"1",""
+"1","
+"
+"1","
+"
+"1","
+"
+"1","
+"
+"0","install.packages(""tensorflow"", dependencies = TRUE)"
+"0","install.packages(""tensorflow"", dependencies = TRUE)"
+"0","install.packages(""tensorflow"", dependencies = TRUE)"
+"0","install.packages(""tensorflow"", dependencies = TRUE)"
+"1","Error in "
+"1","Error in "
+"1","Error in "
+"1","Error in "
+"1",""
+"1",""
+"1",""
+"1",""
+"1","install.packages"
+"1","install.packages"
+"1","install.packages"
+"1","install.packages"
+"1",""
+"1",""
+"1",""
+"1",""
+"1"," : "
+"1"," : "
+"1"," : "
+"1"," : "
+"1",""
+"1",""
+"1",""
+"1",""
+"1","Updating loaded packages"
+"1","Updating loaded packages"
+"1","Updating loaded packages"
+"1","Updating loaded packages"
+"1",""
+"1",""
+"1",""
+"1",""
+"1","
+"
+"1","
+"
+"1","
+"
+"1","
+"
+"0","install.packages(""keras"", dependencies = TRUE)"
+"0","install.packages(""keras"", dependencies = TRUE)"
+"0","install.packages(""keras"", dependencies = TRUE)"
+"0","install.packages(""keras"", dependencies = TRUE)"
+"1","Error in "
+"1","Error in "
+"1","Error in "
+"1","Error in "
+"1",""
+"1",""
+"1",""
+"1",""
+"1","install.packages"
+"1","install.packages"
+"1","install.packages"
+"1","install.packages"
+"1",""
+"1",""
+"1",""
+"1",""
+"1"," : "
+"1"," : "
+"1"," : "
+"1"," : "
+"1",""
+"1",""
+"1",""
+"1",""
+"1","Updating loaded packages"
+"1","Updating loaded packages"
+"1","Updating loaded packages"
+"1","Updating loaded packages"
+"1",""
+"1",""
+"1",""
+"1",""
+"1","
+"
+"1","
+"
+"1","
+"
+"1","
+"
+"0","install.packages(""reticulate"", dependencies = TRUE)"
+"0","install.packages(""reticulate"", dependencies = TRUE)"
+"0","install.packages(""reticulate"", dependencies = TRUE)"
+"0","install.packages(""reticulate"", dependencies = TRUE)"
+"1","Error in "
+"1","Error in "
+"1","Error in "
+"1","Error in "
+"1",""
+"1",""
+"1",""
+"1",""
+"1","install.packages"
+"1","install.packages"
+"1","install.packages"
+"1","install.packages"
+"1",""
+"1",""
+"1",""
+"1",""
+"1"," : "
+"1"," : "
+"1"," : "
+"1"," : "
+"1",""
+"1",""
+"1",""
+"1",""
+"1","Updating loaded packages"
+"1","Updating loaded packages"
+"1","Updating loaded packages"
+"1","Updating loaded packages"
+"1",""
+"1",""
+"1",""
+"1",""
+"1","
+"
+"1","
+"
+"1","
+"
+"1","
+"
+"0","install.packages(""latexpdf"")"
+"0","install.packages(""latexpdf"")"
+"0","install.packages(""latexpdf"")"
+"0","install.packages(""latexpdf"")"
+"1","Error in "
+"1","Error in "
+"1","Error in "
+"1","Error in "
+"1",""
+"1",""
+"1",""
+"1",""
+"1","install.packages"
+"1","install.packages"
+"1","install.packages"
+"1","install.packages"
+"1",""
+"1",""
+"1",""
+"1",""
+"1"," : "
+"1"," : "
+"1"," : "
+"1"," : "
+"1",""
+"1",""
+"1",""
+"1",""
+"1","Updating loaded packages"
+"1","Updating loaded packages"
+"1","Updating loaded packages"
+"1","Updating loaded packages"
+"1",""
+"1",""
+"1",""
+"1",""
+"1","
+"
+"1","
+"
+"1","
+"
+"1","
+"
+"0","library(tidyverse)"
+"0","library(tidyverse)"
+"0","library(tidyverse)"
+"0","library(tidyverse)"
+"0","library(reticulate)"
+"0","library(reticulate)"
+"0","library(reticulate)"
+"0","library(reticulate)"
+"0","library(keras)"
+"0","library(keras)"
+"0","library(keras)"
+"0","library(keras)"
+"0","library(latexpdf)"
+"0","library(latexpdf)"
+"0","library(latexpdf)"
+"0","library(latexpdf)"
+"2","Error in py_call_impl(callable, dots$args, dots$keywords) : 
+  TypeError: float() argument must be a string or a number, not 'NoneType'
+
+Detailed traceback: 
+  File ""C:\Users\joeje\ANACON~1\lib\site-packages\matplotlib\pyplot.py"", line 303, in rc
+    matplotlib.rc(*args, **kwargs)
+  File ""C:\Users\joeje\ANACON~1\lib\site-packages\matplotlib\__init__.py"", line 1263, in rc
+    rcParams[key] = v
+  File ""C:\Users\joeje\ANACON~1\lib\site-packages\matplotlib\__init__.py"", line 922, in __setitem__
+    cval = self.validate[key](val)
+  File ""C:\Users\joeje\ANACON~1\lib\site-packages\matplotlib\rcsetup.py"", line 318, in __call__
+    for val in s]
+  File ""C:\Users\joeje\ANACON~1\lib\site-packages\matplotlib\rcsetup.py"", line 318, in <listcomp>
+    for val in s]
+"
+"2","Error in py_call_impl(callable, dots$args, dots$keywords) : 
+  TypeError: float() argument must be a string or a number, not 'NoneType'
+
+Detailed traceback: 
+  File ""C:\Users\joeje\ANACON~1\lib\site-packages\matplotlib\pyplot.py"", line 303, in rc
+    matplotlib.rc(*args, **kwargs)
+  File ""C:\Users\joeje\ANACON~1\lib\site-packages\matplotlib\__init__.py"", line 1263, in rc
+    rcParams[key] = v
+  File ""C:\Users\joeje\ANACON~1\lib\site-packages\matplotlib\__init__.py"", line 922, in __setitem__
+    cval = self.validate[key](val)
+  File ""C:\Users\joeje\ANACON~1\lib\site-packages\matplotlib\rcsetup.py"", line 318, in __call__
+    for val in s]
+  File ""C:\Users\joeje\ANACON~1\lib\site-packages\matplotlib\rcsetup.py"", line 318, in <listcomp>
+    for val in s]
+"
+"2","Error in py_call_impl(callable, dots$args, dots$keywords) : 
+  TypeError: float() argument must be a string or a number, not 'NoneType'
+
+Detailed traceback: 
+  File ""C:\Users\joeje\ANACON~1\lib\site-packages\matplotlib\pyplot.py"", line 303, in rc
+    matplotlib.rc(*args, **kwargs)
+  File ""C:\Users\joeje\ANACON~1\lib\site-packages\matplotlib\__init__.py"", line 1263, in rc
+    rcParams[key] = v
+  File ""C:\Users\joeje\ANACON~1\lib\site-packages\matplotlib\__init__.py"", line 922, in __setitem__
+    cval = self.validate[key](val)
+  File ""C:\Users\joeje\ANACON~1\lib\site-packages\matplotlib\rcsetup.py"", line 318, in __call__
+    for val in s]
+  File ""C:\Users\joeje\ANACON~1\lib\site-packages\matplotlib\rcsetup.py"", line 318, in <listcomp>
+    for val in s]
+"
+"2","Error in py_call_impl(callable, dots$args, dots$keywords) : 
+  TypeError: float() argument must be a string or a number, not 'NoneType'
+
+Detailed traceback: 
+  File ""C:\Users\joeje\ANACON~1\lib\site-packages\matplotlib\pyplot.py"", line 303, in rc
+    matplotlib.rc(*args, **kwargs)
+  File ""C:\Users\joeje\ANACON~1\lib\site-packages\matplotlib\__init__.py"", line 1263, in rc
+    rcParams[key] = v
+  File ""C:\Users\joeje\ANACON~1\lib\site-packages\matplotlib\__init__.py"", line 922, in __setitem__
+    cval = self.validate[key](val)
+  File ""C:\Users\joeje\ANACON~1\lib\site-packages\matplotlib\rcsetup.py"", line 318, in __call__
+    for val in s]
+  File ""C:\Users\joeje\ANACON~1\lib\site-packages\matplotlib\rcsetup.py"", line 318, in <listcomp>
+    for val in s]
+"
+"0","source_python(""TrainingDataGrabber.py"")"
+"0","source_python(""TrainingDataGrabber.py"")"
+"0","source_python(""TrainingDataGrabber.py"")"
+"0","source_python(""TrainingDataGrabber.py"")"
+"1","['Chuck Grip.csv', 'Fine Pinch.csv', 'H. Open.csv', 'Hook Grip.csv', 'Key Grip.csv', 'No Move.csv', 'Power Grip.csv', 'Thumb Enclosed.csv', 'Tool Grip.csv', 'W. Abduction.csv', 'W. Adduction.csv', 'W. Extension.csv', 'W. Flexion.csv', 'W. Pronation.csv', 'W. Supination.csv']
+"
+"0","as.data.frame(Training_Data_Files)"
+"1","['Chuck Grip.csv', 'Fine Pinch.csv', 'H. Open.csv', 'Hook Grip.csv', 'Key Grip.csv', 'No Move.csv', 'Power Grip.csv', 'Thumb Enclosed.csv', 'Tool Grip.csv', 'W. Abduction.csv', 'W. Adduction.csv', 'W. Extension.csv', 'W. Flexion.csv', 'W. Pronation.csv', 'W. Supination.csv']
+"
+"0","as.data.frame(Training_Data_Files)"
+"1","['Chuck Grip.csv', 'Fine Pinch.csv', 'H. Open.csv', 'Hook Grip.csv', 'Key Grip.csv', 'No Move.csv', 'Power Grip.csv', 'Thumb Enclosed.csv', 'Tool Grip.csv', 'W. Abduction.csv', 'W. Adduction.csv', 'W. Extension.csv', 'W. Flexion.csv', 'W. Pronation.csv', 'W. Supination.csv']
+"

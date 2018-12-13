@@ -1,0 +1,38 @@
+[0m[0K]0;:/c/Users/joeje/Desktop/Intro_to_Python/MEGAHAND[?25l
+[0;32mjoeje@DESKTOP-BOJGR8B [0;35m [0;33m~/Desktop/Intro_to_Python/MEGAHAND[0;36m (master|MERGING)[0m[0K
+$[0K[3G[?25h[?25l$ p[0K[?25ha[0Kn[0Kd[0Ko[0Kc[0K[?25l
+bash: pandoc: command not found[0K
+[0K[?25h[?25l
+[0;32mjoeje@DESKTOP-BOJGR8B [0;35m [0;33m~/Desktop/Intro_to_Python/MEGAHAND[0;36m (master|MERGING)[0m[0K
+$[0K[3G[?25h[?25l$ R[0K[?25h[?25l
+[0K[?25h]0;Rterm (64-bit)[?25l
+R version 3.5.1 (2018-07-02) -- "Feather Spray"[0K
+Copyright (C) 2018 The R Foundation for Statistical Computing[0K
+Platform: x86_64-w64-mingw32/x64 (64-bit)[0K
+[0K
+R is free software and comes with ABSOLUTELY NO WARRANTY.[0K
+You are welcome to redistribute it under certain conditions.[0K
+Type 'license()' or 'licence()' for distribution details.[0K
+[0K
+[0K[?25h  Natural language support but running in an English locale[0K[?25l
+[0K
+R is a collaborative project with many contributors.[0K
+Type 'contributors()' for more information and[0K
+'citation()' on how to cite R or R packages in publications.[0K
+[0K
+Type 'demo()' for some demos, 'help()' for on-line help, or[0K
+'help.start()' for an HTML browser interface to help.[0K
+Type 'q()' to quit R.[0K
+[0K
+[0K[?25h[Previously saved workspace restored][0K[?25l
+[0K
+[0K[?25h>[0K[3G[?25l> s[0K[?25ho[0Ku[0Kr[0Kc[0Ke[0K`[0K[?25l> source[0K[?25h_[0Kp[0Ky[0K[?25lt[0K[12G[?25h[13G[?25l> source_pyth[0K[?25ho[0Kn[0K([0KT[0Kr[0Ka[0Ki[0Kn[0Ki[0Kn[0Kg[0K[?25l> source_python(Trainin[0K[?25h[?25l> source_python(Traini[0K[?25h[?25l> source_python(Train[0K[?25h[?25l> source_python(Trai[0K[?25h[?25l> source_python(Tra[0K[?25h[?25l> source_python(Tr[0K[20G[?25h[19G[?25l> source_python(T[0K[?25h[?25l> source_python([0K[?25h[?25l"[0K[17G[?25h[18G[?25l> source_python("T[0K[18G[?25h[19G[?25l> source_python("Tr[0K[?25ha[0Kin[0Ki[0Kn[0Kg[0KD[0Ka[0Kt[0Ka[0KG[0Kr[0Ka[0Kb[0Kb[0Ke[0Kr[0K.[0Kp[0Ky[0K"[0K)[0K[?25l
+Error in source_python("TrainingDataGrabber.py") :[0K
+  could not find function "source_python"[0K[40G[?25h[?25l
+>[0K[3G[?25h[?25l> sou[0K[4G[?25h[?25l> source_python("TrainingDataGrabber.py")[0K[?25h[41G[3G[?25l> rsource_python("TrainingDataGrabber.py")[0K[41G[?25h[4G[?25l> resource_python("TrainingDataGrabber.py")[0K[5G[?25h[?25l> retsource_python("TrainingDataGrabber.py")[0K[6G[?25h[?25l> retisource_python("TrainingDataGrabber.py")[0K[7G[?25h[?25l> reticsource_python("TrainingDataGrabber.py")[0K[46G[?25h[8G[?25l> reticusource_python("TrainingDataGrabber.py")[0K[9G[?25h[?25l> reticulsource_python("TrainingDataGrabber.py")[0K[10G[?25h[?25l> reticulasource_python("TrainingDataGrabber.py")[0K[11G[?25h[?25l> reticulatsorce_python("TrainingDataGrabber.py")[0K[12G[?25h[?25l> reticulatsource_python("TrainingDataGrabber.py")[0K[12G[?25h[?25l> reticulatesource_python("TrainingDataGrabber.py")[0K[13G[?25h[?25l> reticulate:source_python("TrainingDataGrabber.y")[0K[47G[?25h[?25l> reticulate:source_python("TrainingDataGrabber.py")[0K[14G[?25h[?25l> reticulate::source_python("TrainingDataGrabber.py")[0K[15G[?25h[?25l
+[0K[?25hError in py_run_file_impl(file, local, convert) :[0K[?25l
+  NameError: name 'Training_Data_Files' is not defined[0K
+[0K
+Detailed traceback:[0K
+  File "<string>", line 10, in <module>[0K
+>[0K[3G[?25h

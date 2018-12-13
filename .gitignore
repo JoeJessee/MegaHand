@@ -1,1 +1,4 @@
-.vscode/settings.json
+.Rproj.user
+.Rhistory
+.RData
+.Ruserdata
